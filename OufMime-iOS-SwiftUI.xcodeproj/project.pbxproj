@@ -56,6 +56,7 @@
 		AE1AB1B527E3835500264774 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		AE1AB1B727E388A800264774 /* WordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordViewModel.swift; sourceTree = "<group>"; };
 		AE1AB1BA27E38A0F00264774 /* words.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = words.json; sourceTree = "<group>"; };
+		AE4A10C327E495A200357677 /* TestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestPlan.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +87,7 @@
 		AE1AB17427E3804100264774 = {
 			isa = PBXGroup;
 			children = (
+				AE4A10C327E495A200357677 /* TestPlan.xctestplan */,
 				AE1AB17F27E3804100264774 /* OufMime-iOS-SwiftUI */,
 				AE1AB19527E3804300264774 /* OufMime-iOS-SwiftUITests */,
 				AE1AB19F27E3804300264774 /* OufMime-iOS-SwiftUIUITests */,
