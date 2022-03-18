@@ -9,41 +9,25 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
+  @State var hasGameStarted = false
+  @State var isShowingSettings = false
   @StateObject var vm = WordsViewModel()
-
+  @StateObject var dimens = Dimens()
+  
   var body: some View {
     NavigationView {
-      List {
-        ForEach(vm.words) { item in
-          NavigationLink {
-            Text("Item at \(item.word)")
-          } label: {
-            Text(item.word + " " + item.category.rawValue)
-          }
-        }
-      }
-        .toolbar {
-        ToolbarItem(placement: .navigationBarTrailing) {
-          EditButton()
-        }
-        ToolbarItem {
-          Button(action: {
-            vm.fetchWords()
-          }) {
-            Label("Add Item", systemImage: "plus")
-          }
-        }
-      }
-      Text("Select an item")
+      WelcomeScreen(hasGameStarted: $hasGameStarted, isShowingSettings: $isShowingSettings)
     }
+    .environmentObject(vm)
+    .environmentObject(dimens)
   }
-
+  
   private func addItem() {
     withAnimation {
       vm.insert(words: ["Test"], in: Category.allCases.shuffled().first!)
     }
   }
-
+  
 }
 
 struct ContentView_Previews: PreviewProvider {
