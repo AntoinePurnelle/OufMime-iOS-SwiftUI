@@ -8,11 +8,10 @@
 import SwiftUI
 
 extension Color {
-  static var accent: Color { return Color("AccentColor") }
-  static var accentTransparent: Color { return Color("AccentTransparentColor") }
-  static var green: Color { return Color("GreenColor") }
+  static var accentTransparentColor: Color { return Color("AccentTransparentColor") }
+  static var greenColor: Color { return Color("GreenColor") }
   static var primaryColor: Color { return Color("PrimaryColor") }
-  static var primaryDark: Color { return Color("PrimaryDarkColor") }
-  static var red: Color { return Color("RedColor") }
-  static var whiteTransarent: Color { return Color("WhiteTransparentColor") }
+  static var primaryDarkColor: Color { return Color("PrimaryDarkColor") }
+  static var redColor: Color { return Color("RedColor") }
+  static var whiteTransarentColor: Color { return Color("WhiteTransparentColor") }
 }

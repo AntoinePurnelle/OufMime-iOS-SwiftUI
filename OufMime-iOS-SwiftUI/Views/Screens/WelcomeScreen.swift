@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct WelcomeScreen: View {
-  @Binding var hasGameStarted: Bool
-  @Binding var isShowingSettings: Bool
+  @State var hasGameStarted = false
+  @State var isShowingSettings = false
   @EnvironmentObject var vm: WordsViewModel
   @EnvironmentObject var dimens: Dimens
-
+  @EnvironmentObject var appState: AppState
+  
   var body: some View {
     VStack(alignment: .center, spacing: .leastNormalMagnitude) {
       Text("OufMime!")
@@ -20,33 +21,41 @@ struct WelcomeScreen: View {
         .font(.custom(Constants.font, size: dimens.bigTitleText))
         .fontWeight(.bold)
         .frame(maxHeight: .infinity)
-
+      
       NavigationLink(
-        destination: TurnStartScreen().navigationBarHidden(true),
+        destination: TurnStartScreen(invertColors: vm.shouldInvertColors)
+        .navigationBarHidden(true)
+        .id(appState.turnStartScreenId),
         isActive: $hasGameStarted
       ) {
-        SizedButton(text: "Jouer !") {
+        SizedButton(text: "Jouer !", textSize: .big) {
           hasGameStarted = true
         }
       }
-        .frame(maxHeight: .infinity)
-
-      NavigationLink(destination: SettingsScreen(hasGameStarted: $hasGameStarted, isShowingSettings: $isShowingSettings).navigationBarHidden(true), isActive: $isShowingSettings) {
+      .isDetailLink(false)
+      .frame(maxHeight: .infinity)
+      
+      NavigationLink(
+        destination: SettingsScreen().navigationBarHidden(true),
+        isActive: $isShowingSettings
+      ) {
         Button(action: { isShowingSettings = true }) {
           Text("Paramètres")
             .font(.custom(Constants.font, size: dimens.bodyText))
             .foregroundColor(.gray)
         }
       }
-        .frame(maxHeight: .infinity)
+      .isDetailLink(false)
+      .frame(maxHeight: .infinity)
     }
   }
 }
 
 struct WelcomeScreen_Previews: PreviewProvider {
   static var previews: some View {
-    WelcomeScreen(hasGameStarted: Binding.constant(false), isShowingSettings: Binding.constant(false))
-      .environmentObject(WordsViewModel())
-      .environmentObject(Dimens())
+    WelcomeScreen()
+    .environmentObject(WordsViewModel())
+    .environmentObject(Dimens())
+    .environmentObject(AppState())
   }
 }

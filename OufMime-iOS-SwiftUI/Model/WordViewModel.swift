@@ -98,11 +98,19 @@ extension WordsViewModel {
     wordsPlayedInTurn[index].found.toggle()
   }
   
+  var shouldInvertColors: Bool {
+    get { currentTeam == 0 }
+  }
+  
+  var currentTeamName: String {
+    get { currentTeam == 0 ? "Les Bleus" : "Les Oranges" }
+  }
+  
 }
 
 // Game LifeCycle Extensions
 extension WordsViewModel {
-
+  
   func initGame(onCompleted: @escaping (() -> Void)) {
     repo.fetchRandomWords(inCategories: selectedCategories, withCount: wordsCount) { words in
       self.words = words

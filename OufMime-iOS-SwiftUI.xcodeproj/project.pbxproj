@@ -20,6 +20,16 @@
 		AE1AB1B627E3835500264774 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1AB1B527E3835500264774 /* Category.swift */; };
 		AE1AB1B827E388A800264774 /* WordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1AB1B727E388A800264774 /* WordViewModel.swift */; };
 		AE1AB1BB27E38A0F00264774 /* words.json in Resources */ = {isa = PBXBuildFile; fileRef = AE1AB1BA27E38A0F00264774 /* words.json */; };
+		AE4A10C527E4B56100357677 /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4A10C427E4B56100357677 /* WelcomeScreen.swift */; };
+		AE4A10C727E4B7AF00357677 /* CustomViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4A10C627E4B7AF00357677 /* CustomViews.swift */; };
+		AE4A10CA27E4B84000357677 /* Dimens.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4A10C927E4B84000357677 /* Dimens.swift */; };
+		AE4A10CC27E4BF2500357677 /* ColorExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4A10CB27E4BF2500357677 /* ColorExt.swift */; };
+		AE4A10D027E4D0B500357677 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4A10CF27E4D0B500357677 /* Constants.swift */; };
+		AE4A10D227E4D36500357677 /* SettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4A10D127E4D36500357677 /* SettingsScreen.swift */; };
+		AEEDCD1727E87981004977D7 /* ScoreboardViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEDCD1627E87981004977D7 /* ScoreboardViews.swift */; };
+		AEEDCD1927E87C99004977D7 /* TurnStartScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEDCD1827E87C99004977D7 /* TurnStartScreen.swift */; };
+		AEEDCD1B27E8AD58004977D7 /* PlayScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEDCD1A27E8AD58004977D7 /* PlayScreen.swift */; };
+		AEEDCD1D27E8D11B004977D7 /* TurnEndScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEDCD1C27E8D11B004977D7 /* TurnEndScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +67,16 @@
 		AE1AB1B727E388A800264774 /* WordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordViewModel.swift; sourceTree = "<group>"; };
 		AE1AB1BA27E38A0F00264774 /* words.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = words.json; sourceTree = "<group>"; };
 		AE4A10C327E495A200357677 /* TestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestPlan.xctestplan; sourceTree = "<group>"; };
+		AE4A10C427E4B56100357677 /* WelcomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreen.swift; sourceTree = "<group>"; };
+		AE4A10C627E4B7AF00357677 /* CustomViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViews.swift; sourceTree = "<group>"; };
+		AE4A10C927E4B84000357677 /* Dimens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dimens.swift; sourceTree = "<group>"; };
+		AE4A10CB27E4BF2500357677 /* ColorExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExt.swift; sourceTree = "<group>"; };
+		AE4A10CF27E4D0B500357677 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		AE4A10D127E4D36500357677 /* SettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreen.swift; sourceTree = "<group>"; };
+		AEEDCD1627E87981004977D7 /* ScoreboardViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreboardViews.swift; sourceTree = "<group>"; };
+		AEEDCD1827E87C99004977D7 /* TurnStartScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurnStartScreen.swift; sourceTree = "<group>"; };
+		AEEDCD1A27E8AD58004977D7 /* PlayScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayScreen.swift; sourceTree = "<group>"; };
+		AEEDCD1C27E8D11B004977D7 /* TurnEndScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurnEndScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +128,7 @@
 		AE1AB17F27E3804100264774 /* OufMime-iOS-SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				AE4A10C827E4B80100357677 /* Utils */,
 				AE1AB1B927E389DC00264774 /* Assets */,
 				AE1AB1B027E3829B00264774 /* Model */,
 				AE1AB1AF27E3828F00264774 /* Views */,
@@ -147,6 +168,8 @@
 		AE1AB1AF27E3828F00264774 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				AEEDCD1527E87902004977D7 /* Library */,
+				AEEDCD1427E878DD004977D7 /* Screens */,
 				AE1AB18227E3804100264774 /* ContentView.swift */,
 			);
 			path = Views;
@@ -169,6 +192,37 @@
 				AE1AB1BA27E38A0F00264774 /* words.json */,
 			);
 			path = Assets;
+			sourceTree = "<group>";
+		};
+		AE4A10C827E4B80100357677 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				AE4A10C927E4B84000357677 /* Dimens.swift */,
+				AE4A10CB27E4BF2500357677 /* ColorExt.swift */,
+				AE4A10CF27E4D0B500357677 /* Constants.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		AEEDCD1427E878DD004977D7 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				AEEDCD1A27E8AD58004977D7 /* PlayScreen.swift */,
+				AE4A10D127E4D36500357677 /* SettingsScreen.swift */,
+				AEEDCD1827E87C99004977D7 /* TurnStartScreen.swift */,
+				AE4A10C427E4B56100357677 /* WelcomeScreen.swift */,
+				AEEDCD1C27E8D11B004977D7 /* TurnEndScreen.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		AEEDCD1527E87902004977D7 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				AE4A10C627E4B7AF00357677 /* CustomViews.swift */,
+				AEEDCD1627E87981004977D7 /* ScoreboardViews.swift */,
+			);
+			path = Library;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -302,11 +356,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE4A10C727E4B7AF00357677 /* CustomViews.swift in Sources */,
+				AEEDCD1B27E8AD58004977D7 /* PlayScreen.swift in Sources */,
 				AE1AB18D27E3804300264774 /* OufMime_iOS_SwiftUI.xcdatamodeld in Sources */,
 				AE1AB1B427E3832100264774 /* WordModel.swift in Sources */,
+				AE4A10C527E4B56100357677 /* WelcomeScreen.swift in Sources */,
 				AE1AB1B227E382C100264774 /* WordRepository.swift in Sources */,
 				AE1AB18327E3804100264774 /* ContentView.swift in Sources */,
 				AE1AB1B627E3835500264774 /* Category.swift in Sources */,
+				AE4A10D027E4D0B500357677 /* Constants.swift in Sources */,
+				AE4A10D227E4D36500357677 /* SettingsScreen.swift in Sources */,
+				AE4A10CC27E4BF2500357677 /* ColorExt.swift in Sources */,
+				AEEDCD1927E87C99004977D7 /* TurnStartScreen.swift in Sources */,
+				AEEDCD1727E87981004977D7 /* ScoreboardViews.swift in Sources */,
+				AEEDCD1D27E8D11B004977D7 /* TurnEndScreen.swift in Sources */,
+				AE4A10CA27E4B84000357677 /* Dimens.swift in Sources */,
 				AE1AB1B827E388A800264774 /* WordViewModel.swift in Sources */,
 				AE1AB18127E3804100264774 /* OufMime_iOS_SwiftUIApp.swift in Sources */,
 			);
@@ -475,6 +539,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -504,6 +569,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

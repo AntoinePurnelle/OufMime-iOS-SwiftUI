@@ -16,6 +16,21 @@ class Dimens: ObservableObject {
   var smallButtonText = CGFloat(16.0)
   var mediumButtonText = CGFloat(24.0)
   var bigButtonText = CGFloat(32.0)
+  
+  var paddingXSmall = CGFloat(2.0)
+  var paddingSmall = CGFloat(4.0)
+  var paddingMedium = CGFloat(8.0)
+  var paddingLarge = CGFloat(16.0)
+  var paddingXLarge = CGFloat(32.0)
+  
+  var borderSmall = CGFloat(1.0)
+  var borderMedium = CGFloat(2.0)
+  
+  var iconSmall = CGFloat(70.0)
+  var iconMedium = CGFloat(100.0)
+  
+  var cornerRadiusMedium = CGFloat(8.0)
+  var cornerRadiusLarge = CGFloat(20.0)
 
   func getButtonDimens(for size: ButtonTextSize) -> CGFloat {
     switch(size) {

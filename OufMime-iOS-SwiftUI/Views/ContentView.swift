@@ -9,17 +9,18 @@ import SwiftUI
 import CoreData
 
 struct ContentView: View {
-  @State var hasGameStarted = false
-  @State var isShowingSettings = false
   @StateObject var vm = WordsViewModel()
   @StateObject var dimens = Dimens()
+  @ObservedObject var appState = AppState()
   
   var body: some View {
     NavigationView {
-      WelcomeScreen(hasGameStarted: $hasGameStarted, isShowingSettings: $isShowingSettings)
+      WelcomeScreen()
+      .id(appState.welcomeScreenId)
     }
     .environmentObject(vm)
     .environmentObject(dimens)
+    .environmentObject(appState)
   }
   
   private func addItem() {
@@ -34,4 +35,10 @@ struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
     ContentView()
   }
+}
+
+
+final class AppState: ObservableObject {
+  @Published var welcomeScreenId = UUID()
+  @Published var turnStartScreenId = UUID()
 }
