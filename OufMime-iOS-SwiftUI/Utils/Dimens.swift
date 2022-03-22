@@ -29,6 +29,10 @@ class Dimens: ObservableObject {
   var iconSmall = CGFloat(70.0)
   var iconMedium = CGFloat(100.0)
   
+  var timerSize = CGFloat(100.0)
+  var timerPathStrokeWidth = CGFloat(2.0)
+  var timerStrokeWidth = CGFloat(6.0)
+  
   var cornerRadiusMedium = CGFloat(8.0)
   var cornerRadiusLarge = CGFloat(20.0)
 

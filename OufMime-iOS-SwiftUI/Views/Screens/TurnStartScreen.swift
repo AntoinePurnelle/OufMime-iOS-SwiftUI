@@ -13,10 +13,8 @@ struct TurnStartScreen: View {
   @EnvironmentObject var dimens: Dimens
   @EnvironmentObject var appState: AppState
   
-  var invertColors: Bool
-  
   var body: some View {
-    let background = invertColors ? Color.accentColor : Color.primaryColor
+    let background = vm.shouldInvertColors ? Color.accentColor : Color.primaryColor
     
     ZStack {
       background
@@ -28,7 +26,7 @@ struct TurnStartScreen: View {
           team1RoundScore: vm.getCurrentRoundScore(forTeam: 0),
           team2TotalScore: vm.getTotalScore(forTeam: 1),
           team2RoundScore: vm.getCurrentRoundScore(forTeam: 1),
-          invertColors: invertColors
+          invertColors: vm.shouldInvertColors
         )
         .frame(maxHeight: .infinity)
         
@@ -70,9 +68,7 @@ struct TurnStartScreen: View {
 
 struct TurnStartScreen_Previews: PreviewProvider {
   static var previews: some View {
-    TurnStartScreen(
-      invertColors: false
-    )
+    TurnStartScreen()
     .environmentObject(WordsViewModel())
     .environmentObject(Dimens())
     .environmentObject(AppState())

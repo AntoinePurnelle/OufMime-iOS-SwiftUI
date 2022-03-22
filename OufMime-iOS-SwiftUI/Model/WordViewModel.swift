@@ -13,8 +13,7 @@ class WordsViewModel: ObservableObject {
   private var repo: WordRepository!
   
   // Game Settings
-  public private(set) var timerTotalTime: Double = 40
-  public var timerCurrentTime: Double = 40
+  public private(set) var timerTotalTime: Int = 10
   public private(set) var wordsCount = 40
   public var categories = Dictionary(uniqueKeysWithValues: Category.allCases.map { ($0.rawValue, true) })
   private var selectedCategories: [String] {
@@ -89,7 +88,7 @@ extension WordsViewModel {
     get { wordsPlayedInTurn.filter { (_, found) in !found }.count }
   }
   
-  func editGamesSettings(withWordsCount wordsCount: Int, turnDuration seconds: Double) {
+  func editGamesSettings(withWordsCount wordsCount: Int, turnDuration seconds: Int) {
     self.wordsCount = wordsCount
     self.timerTotalTime = seconds
   }
@@ -145,7 +144,6 @@ extension WordsViewModel {
   func initTurn() {
     wordsPlayedInTurn.removeAll()
     currentWord = wordsToPlay.first
-    timerCurrentTime = timerTotalTime
   }
   
   func playWord(wasFound: Bool, timerEnded: Bool) {

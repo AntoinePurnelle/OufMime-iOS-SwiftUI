@@ -20,6 +20,11 @@
 		AE1AB1B627E3835500264774 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1AB1B527E3835500264774 /* Category.swift */; };
 		AE1AB1B827E388A800264774 /* WordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1AB1B727E388A800264774 /* WordViewModel.swift */; };
 		AE1AB1BB27E38A0F00264774 /* words.json in Resources */ = {isa = PBXBuildFile; fileRef = AE1AB1BA27E38A0F00264774 /* words.json */; };
+		AE3C86F727E9CCA300030154 /* timer_other.wav in Resources */ = {isa = PBXBuildFile; fileRef = AE3C86F227E9CCA300030154 /* timer_other.wav */; };
+		AE3C86F827E9CCA300030154 /* word_ok.wav in Resources */ = {isa = PBXBuildFile; fileRef = AE3C86F327E9CCA300030154 /* word_ok.wav */; };
+		AE3C86F927E9CCA300030154 /* times_up.wav in Resources */ = {isa = PBXBuildFile; fileRef = AE3C86F427E9CCA300030154 /* times_up.wav */; };
+		AE3C86FA27E9CCA300030154 /* word_wrong.wav in Resources */ = {isa = PBXBuildFile; fileRef = AE3C86F527E9CCA300030154 /* word_wrong.wav */; };
+		AE3C86FB27E9CCA300030154 /* timer.wav in Resources */ = {isa = PBXBuildFile; fileRef = AE3C86F627E9CCA300030154 /* timer.wav */; };
 		AE4A10C527E4B56100357677 /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4A10C427E4B56100357677 /* WelcomeScreen.swift */; };
 		AE4A10C727E4B7AF00357677 /* CustomViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4A10C627E4B7AF00357677 /* CustomViews.swift */; };
 		AE4A10CA27E4B84000357677 /* Dimens.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4A10C927E4B84000357677 /* Dimens.swift */; };
@@ -66,6 +71,11 @@
 		AE1AB1B527E3835500264774 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		AE1AB1B727E388A800264774 /* WordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordViewModel.swift; sourceTree = "<group>"; };
 		AE1AB1BA27E38A0F00264774 /* words.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = words.json; sourceTree = "<group>"; };
+		AE3C86F227E9CCA300030154 /* timer_other.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = timer_other.wav; sourceTree = "<group>"; };
+		AE3C86F327E9CCA300030154 /* word_ok.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = word_ok.wav; sourceTree = "<group>"; };
+		AE3C86F427E9CCA300030154 /* times_up.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = times_up.wav; sourceTree = "<group>"; };
+		AE3C86F527E9CCA300030154 /* word_wrong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = word_wrong.wav; sourceTree = "<group>"; };
+		AE3C86F627E9CCA300030154 /* timer.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = timer.wav; sourceTree = "<group>"; };
 		AE4A10C327E495A200357677 /* TestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestPlan.xctestplan; sourceTree = "<group>"; };
 		AE4A10C427E4B56100357677 /* WelcomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreen.swift; sourceTree = "<group>"; };
 		AE4A10C627E4B7AF00357677 /* CustomViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViews.swift; sourceTree = "<group>"; };
@@ -178,9 +188,9 @@
 		AE1AB1B027E3829B00264774 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				AE1AB1B127E382C100264774 /* WordRepository.swift */,
-				AE1AB1B327E3832100264774 /* WordModel.swift */,
 				AE1AB1B527E3835500264774 /* Category.swift */,
+				AE1AB1B327E3832100264774 /* WordModel.swift */,
+				AE1AB1B127E382C100264774 /* WordRepository.swift */,
 				AE1AB1B727E388A800264774 /* WordViewModel.swift */,
 			);
 			path = Model;
@@ -189,6 +199,11 @@
 		AE1AB1B927E389DC00264774 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				AE3C86F227E9CCA300030154 /* timer_other.wav */,
+				AE3C86F627E9CCA300030154 /* timer.wav */,
+				AE3C86F427E9CCA300030154 /* times_up.wav */,
+				AE3C86F327E9CCA300030154 /* word_ok.wav */,
+				AE3C86F527E9CCA300030154 /* word_wrong.wav */,
 				AE1AB1BA27E38A0F00264774 /* words.json */,
 			);
 			path = Assets;
@@ -197,9 +212,9 @@
 		AE4A10C827E4B80100357677 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				AE4A10C927E4B84000357677 /* Dimens.swift */,
 				AE4A10CB27E4BF2500357677 /* ColorExt.swift */,
 				AE4A10CF27E4D0B500357677 /* Constants.swift */,
+				AE4A10C927E4B84000357677 /* Dimens.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -329,8 +344,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE3C86F927E9CCA300030154 /* times_up.wav in Resources */,
 				AE1AB1BB27E38A0F00264774 /* words.json in Resources */,
+				AE3C86F727E9CCA300030154 /* timer_other.wav in Resources */,
 				AE1AB18827E3804300264774 /* Preview Assets.xcassets in Resources */,
+				AE3C86FA27E9CCA300030154 /* word_wrong.wav in Resources */,
+				AE3C86F827E9CCA300030154 /* word_ok.wav in Resources */,
+				AE3C86FB27E9CCA300030154 /* timer.wav in Resources */,
 				AE1AB18527E3804300264774 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

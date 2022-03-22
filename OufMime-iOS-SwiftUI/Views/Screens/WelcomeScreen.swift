@@ -23,9 +23,9 @@ struct WelcomeScreen: View {
         .frame(maxHeight: .infinity)
       
       NavigationLink(
-        destination: TurnStartScreen(invertColors: vm.shouldInvertColors)
-        .navigationBarHidden(true)
-        .id(appState.turnStartScreenId),
+        destination: TurnStartScreen()
+          .navigationBarHidden(true)
+          .id(appState.turnStartScreenId),
         isActive: $hasGameStarted
       ) {
         SizedButton(text: "Jouer !", textSize: .big) {
@@ -54,8 +54,8 @@ struct WelcomeScreen: View {
 struct WelcomeScreen_Previews: PreviewProvider {
   static var previews: some View {
     WelcomeScreen()
-    .environmentObject(WordsViewModel())
-    .environmentObject(Dimens())
-    .environmentObject(AppState())
+      .environmentObject(WordsViewModel())
+      .environmentObject(Dimens())
+      .environmentObject(AppState())
   }
 }
