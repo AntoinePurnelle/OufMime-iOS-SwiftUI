@@ -43,7 +43,9 @@ struct TurnStartScreen: View {
         ) {
           SizedButton(
             text: "\(vm.currentTeamName), jouez !".uppercased(),
+            invertColor: vm.shouldInvertColors,
             onClick: {
+              vm.initTurn()
               isPlaying = true
             }
           )

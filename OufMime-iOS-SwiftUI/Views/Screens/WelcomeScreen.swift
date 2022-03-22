@@ -29,7 +29,10 @@ struct WelcomeScreen: View {
         isActive: $hasGameStarted
       ) {
         SizedButton(text: "Jouer !", textSize: .big) {
-          hasGameStarted = true
+          vm.initGame {
+            vm.initRound()
+            hasGameStarted = true
+          }
         }
       }
       .isDetailLink(false)

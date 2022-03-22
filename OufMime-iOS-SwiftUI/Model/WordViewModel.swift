@@ -40,7 +40,7 @@ class WordsViewModel: ObservableObject {
   private var wordsMissedInRound = [WordModel]()
   public private(set) var wordsPlayedInTurn: [PlayedWord] = []
   
-  public private(set) var currentWord: WordModel? = nil
+  @Published public private(set) var currentWord: WordModel? = nil
   
   
   init() {
@@ -146,7 +146,7 @@ extension WordsViewModel {
     currentWord = wordsToPlay.first
   }
   
-  func playWord(wasFound: Bool, timerEnded: Bool) {
+  func playWord(wasFound: Bool, timerEnded: Bool = false) {
     if hasMoreWords {
       wordsPlayedInTurn.append((wordsToPlay.removeFirst(), wasFound))
       

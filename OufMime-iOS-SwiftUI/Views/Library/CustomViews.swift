@@ -12,6 +12,7 @@ struct SizedButton: View {
   
   var text: String
   var textSize: ButtonTextSize = .medium
+  var invertColor = false
   var onClick: () -> Void
   
   var body: some View {
@@ -21,7 +22,7 @@ struct SizedButton: View {
         .font(.custom(Constants.font, size: dimens.getButtonDimens(for: textSize)))
         .fontWeight(.medium)
         .padding()
-        .background(Color.accentColor)
+        .background(invertColor ? Color.primaryColor : Color.accentColor)
         .cornerRadius(8.0)
     }
   }
@@ -50,16 +51,58 @@ struct AppIcon: View {
       .resizable()
       .scaledToFit()
   }
+}
+
+struct RoundIconButton: View {
+  @EnvironmentObject var dimens: Dimens
   
+  var systemName: String
+  var backgroungColor: Color
+  var action: () -> Void
+  
+  var body: some View {
+    Button(action: action) {
+      ZStack {
+        Circle()
+          .fill(backgroungColor)
+          .frame(
+            width: dimens.iconMedium,
+            height: dimens.iconMedium)
+        
+        Image(systemName: systemName)
+          .resizable()
+          .frame(
+            width: dimens.iconSmall,
+            height: dimens.iconSmall
+          )
+          .font(.title)
+          .foregroundColor(.white)
+      }
+    }
+  }
 }
 
 struct CustomViews_Previews: PreviewProvider {
   static var previews: some View {
     VStack {
-      SizedButton(text: "Button",onClick: {})
+      SizedButton(text: "Button", onClick: { })
         .environmentObject(WordsViewModel())
         .environmentObject(Dimens())
       BodyTextView(text: "Body Text View", color: .primaryColor)
+        .environmentObject(Dimens())
+      AppIcon()
+        .environmentObject(Dimens())
+        .frame(width: 100, height: 100)
+      RoundIconButton(
+        systemName: "checkmark",
+        backgroungColor: .greenColor
+      ) {}
+        .environmentObject(Dimens())
+      RoundIconButton(
+        systemName: "xmark",
+        backgroungColor: .redColor
+      ) {}
+        .environmentObject(Dimens())
     }
     .environmentObject(Dimens())
   }

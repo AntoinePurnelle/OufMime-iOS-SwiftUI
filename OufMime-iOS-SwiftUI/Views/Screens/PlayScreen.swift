@@ -14,10 +14,10 @@ struct PlayScreen: View {
   @EnvironmentObject var appState: AppState
   
   @State var timerCurrentValue: Int = 10
-  let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+  @State var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
   @State var player: AVAudioPlayer? = nil
   @State var timerPlayer: AVAudioPlayer? = nil
-  
+  @State var showTurnEndScreen = false
   
   var body: some View {
     let background = vm.shouldInvertColors ? Color.accentColor : Color.primaryColor
@@ -34,27 +34,71 @@ struct PlayScreen: View {
             bottomLabel: "Manqués",
             bottomScore: vm.wordsMissedInTurnCount,
             color: .white)
+          .frame(maxWidth: .infinity)
           
           TimerView(
             value: $timerCurrentValue,
-            maxValue: vm.wordsCount,
+            maxValue: vm.timerTotalTime,
             invertColors: vm.shouldInvertColors
           )
-          .onReceive(timer) { _ in
+          .frame(maxWidth: .infinity)
+          .onReceive(timer) { value in
             timerCurrentValue -= 1
             
             if timerCurrentValue == 4 {
               play(sound: "timer.wav", isTimerSound: true)
             }
             
-            if timerCurrentValue == 0 {
+            if timerCurrentValue <= 0 {
               play(sound: "times_up.wav")
               timer.upstream.connect().cancel()
               vm.playWord(wasFound: false, timerEnded: true)
+              showTurnEndScreen = true
             }
           }
         }
+        .frame(maxHeight: .infinity)
+        
+        WordCardView(word: vm.currentWord)
+          .frame(maxHeight: .infinity)
+        
+        HStack {
+          RoundIconButton(
+            systemName: "checkmark",
+            backgroungColor: .greenColor
+          ) {
+            playWord(wasFound: true)
+          }
+          .frame(maxWidth: .infinity)
+          
+          RoundIconButton(
+            systemName: "xmark",
+            backgroungColor: .redColor
+          ) {
+            playWord(wasFound: false)
+          }
+          .frame(maxWidth: .infinity)
+          
+          NavigationLink(
+            destination: TurnEndScreen()
+              .navigationBarHidden(true),
+            isActive: $showTurnEndScreen
+          ) { }
+            .isDetailLink(false)
+        }
+        .frame(maxHeight: .infinity)
       }
+      .padding(20)
+    }
+  }
+  
+  func playWord(wasFound: Bool) {
+    play(sound: wasFound ? "word_ok.wav" : "word_wrong.wav")
+    vm.playWord(wasFound: wasFound)
+    
+    if !vm.hasMoreWords {
+      showTurnEndScreen = true
+      timer.upstream.connect().cancel()
     }
   }
   
@@ -123,6 +167,34 @@ struct TimerView: View {
   }
 }
 
+struct WordCardView: View {
+  @EnvironmentObject var dimens: Dimens
+  
+  var word: WordModel?
+  
+  var body: some View {
+    VStack(spacing: 8) {
+      if let word = word {
+        Text(word.word)
+          .font(.custom(Constants.font, size: dimens.titleText))
+          .multilineTextAlignment(.center)
+          .foregroundColor(.accentColor)
+        Text(word.category.rawValue)
+          .font(.custom(Constants.font, size: dimens.subtitleText))
+          .multilineTextAlignment(.center)
+          .foregroundColor(.accentColor)
+      }
+    }
+    .padding()
+    .frame(maxWidth: 800, minHeight: 200)
+    .background(
+      RoundedRectangle(cornerRadius: dimens.cornerRadiusLarge)
+        .fill(Color.white)
+    )
+    .padding()
+  }
+}
+
 struct PlayScreen_Previews: PreviewProvider {
   static var previews: some View {
     PlayScreen()
@@ -133,6 +205,11 @@ struct PlayScreen_Previews: PreviewProvider {
     TimerView(value: Binding.constant(40), maxValue: 60, invertColors: false)
       .environmentObject(Dimens())
       .previewLayout(.fixed(width: 120, height: 120))
+      .background(Color.primaryColor)
+    
+    WordCardView(word: WordModel(word: "Octopus", category: .animals))
+      .environmentObject(Dimens())
+      .previewLayout(.fixed(width: 400, height: 220))
       .background(Color.primaryColor)
   }
 }
