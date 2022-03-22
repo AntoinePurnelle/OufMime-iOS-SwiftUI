@@ -11,7 +11,6 @@ import AVFoundation
 struct PlayScreen: View {
   @EnvironmentObject var vm: WordsViewModel
   @EnvironmentObject var dimens: Dimens
-  @EnvironmentObject var appState: AppState
   
   @State var timerCurrentValue: Int = 10
   @State var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
@@ -200,7 +199,6 @@ struct PlayScreen_Previews: PreviewProvider {
     PlayScreen()
       .environmentObject(WordsViewModel())
       .environmentObject(Dimens())
-      .environmentObject(AppState())
     
     TimerView(value: Binding.constant(40), maxValue: 60, invertColors: false)
       .environmentObject(Dimens())

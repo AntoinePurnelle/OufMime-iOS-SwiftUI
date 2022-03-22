@@ -11,7 +11,6 @@ struct TurnStartScreen: View {
   @State var isPlaying = false
   @EnvironmentObject var vm: WordsViewModel
   @EnvironmentObject var dimens: Dimens
-  @EnvironmentObject var appState: AppState
   
   var body: some View {
     let background = vm.shouldInvertColors ? Color.accentColor : Color.primaryColor
@@ -73,6 +72,5 @@ struct TurnStartScreen_Previews: PreviewProvider {
     TurnStartScreen()
     .environmentObject(WordsViewModel())
     .environmentObject(Dimens())
-    .environmentObject(AppState())
   }
 }

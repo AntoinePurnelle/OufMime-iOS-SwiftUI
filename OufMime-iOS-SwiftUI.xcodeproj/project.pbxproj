@@ -18,13 +18,14 @@
 		AE1AB1B227E382C100264774 /* WordRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1AB1B127E382C100264774 /* WordRepository.swift */; };
 		AE1AB1B427E3832100264774 /* WordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1AB1B327E3832100264774 /* WordModel.swift */; };
 		AE1AB1B627E3835500264774 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1AB1B527E3835500264774 /* Category.swift */; };
-		AE1AB1B827E388A800264774 /* WordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1AB1B727E388A800264774 /* WordViewModel.swift */; };
+		AE1AB1B827E388A800264774 /* WordsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1AB1B727E388A800264774 /* WordsViewModel.swift */; };
 		AE1AB1BB27E38A0F00264774 /* words.json in Resources */ = {isa = PBXBuildFile; fileRef = AE1AB1BA27E38A0F00264774 /* words.json */; };
 		AE3C86F727E9CCA300030154 /* timer_other.wav in Resources */ = {isa = PBXBuildFile; fileRef = AE3C86F227E9CCA300030154 /* timer_other.wav */; };
 		AE3C86F827E9CCA300030154 /* word_ok.wav in Resources */ = {isa = PBXBuildFile; fileRef = AE3C86F327E9CCA300030154 /* word_ok.wav */; };
 		AE3C86F927E9CCA300030154 /* times_up.wav in Resources */ = {isa = PBXBuildFile; fileRef = AE3C86F427E9CCA300030154 /* times_up.wav */; };
 		AE3C86FA27E9CCA300030154 /* word_wrong.wav in Resources */ = {isa = PBXBuildFile; fileRef = AE3C86F527E9CCA300030154 /* word_wrong.wav */; };
 		AE3C86FB27E9CCA300030154 /* timer.wav in Resources */ = {isa = PBXBuildFile; fileRef = AE3C86F627E9CCA300030154 /* timer.wav */; };
+		AE3C86FD27EA1A8100030154 /* ScoreboardScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3C86FC27EA1A8100030154 /* ScoreboardScreen.swift */; };
 		AE4A10C527E4B56100357677 /* WelcomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4A10C427E4B56100357677 /* WelcomeScreen.swift */; };
 		AE4A10C727E4B7AF00357677 /* CustomViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4A10C627E4B7AF00357677 /* CustomViews.swift */; };
 		AE4A10CA27E4B84000357677 /* Dimens.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4A10C927E4B84000357677 /* Dimens.swift */; };
@@ -69,13 +70,14 @@
 		AE1AB1B127E382C100264774 /* WordRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordRepository.swift; sourceTree = "<group>"; };
 		AE1AB1B327E3832100264774 /* WordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordModel.swift; sourceTree = "<group>"; };
 		AE1AB1B527E3835500264774 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
-		AE1AB1B727E388A800264774 /* WordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordViewModel.swift; sourceTree = "<group>"; };
+		AE1AB1B727E388A800264774 /* WordsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsViewModel.swift; sourceTree = "<group>"; };
 		AE1AB1BA27E38A0F00264774 /* words.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = words.json; sourceTree = "<group>"; };
 		AE3C86F227E9CCA300030154 /* timer_other.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = timer_other.wav; sourceTree = "<group>"; };
 		AE3C86F327E9CCA300030154 /* word_ok.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = word_ok.wav; sourceTree = "<group>"; };
 		AE3C86F427E9CCA300030154 /* times_up.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = times_up.wav; sourceTree = "<group>"; };
 		AE3C86F527E9CCA300030154 /* word_wrong.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = word_wrong.wav; sourceTree = "<group>"; };
 		AE3C86F627E9CCA300030154 /* timer.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = timer.wav; sourceTree = "<group>"; };
+		AE3C86FC27EA1A8100030154 /* ScoreboardScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreboardScreen.swift; sourceTree = "<group>"; };
 		AE4A10C327E495A200357677 /* TestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestPlan.xctestplan; sourceTree = "<group>"; };
 		AE4A10C427E4B56100357677 /* WelcomeScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreen.swift; sourceTree = "<group>"; };
 		AE4A10C627E4B7AF00357677 /* CustomViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomViews.swift; sourceTree = "<group>"; };
@@ -191,7 +193,7 @@
 				AE1AB1B527E3835500264774 /* Category.swift */,
 				AE1AB1B327E3832100264774 /* WordModel.swift */,
 				AE1AB1B127E382C100264774 /* WordRepository.swift */,
-				AE1AB1B727E388A800264774 /* WordViewModel.swift */,
+				AE1AB1B727E388A800264774 /* WordsViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -227,6 +229,7 @@
 				AEEDCD1C27E8D11B004977D7 /* TurnEndScreen.swift */,
 				AEEDCD1827E87C99004977D7 /* TurnStartScreen.swift */,
 				AE4A10C427E4B56100357677 /* WelcomeScreen.swift */,
+				AE3C86FC27EA1A8100030154 /* ScoreboardScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 				AE4A10C527E4B56100357677 /* WelcomeScreen.swift in Sources */,
 				AE1AB1B227E382C100264774 /* WordRepository.swift in Sources */,
 				AE1AB18327E3804100264774 /* ContentView.swift in Sources */,
+				AE3C86FD27EA1A8100030154 /* ScoreboardScreen.swift in Sources */,
 				AE1AB1B627E3835500264774 /* Category.swift in Sources */,
 				AE4A10D027E4D0B500357677 /* Constants.swift in Sources */,
 				AE4A10D227E4D36500357677 /* SettingsScreen.swift in Sources */,
@@ -391,7 +395,7 @@
 				AEEDCD1727E87981004977D7 /* ScoreboardViews.swift in Sources */,
 				AEEDCD1D27E8D11B004977D7 /* TurnEndScreen.swift in Sources */,
 				AE4A10CA27E4B84000357677 /* Dimens.swift in Sources */,
-				AE1AB1B827E388A800264774 /* WordViewModel.swift in Sources */,
+				AE1AB1B827E388A800264774 /* WordsViewModel.swift in Sources */,
 				AE1AB18127E3804100264774 /* OufMime_iOS_SwiftUIApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -14,7 +14,7 @@ class WordsViewModel: ObservableObject {
   
   // Game Settings
   public private(set) var timerTotalTime: Int = 10
-  public private(set) var wordsCount = 40
+  public private(set) var wordsCount = 10
   public var categories = Dictionary(uniqueKeysWithValues: Category.allCases.map { ($0.rawValue, true) })
   private var selectedCategories: [String] {
     get {
@@ -38,7 +38,7 @@ class WordsViewModel: ObservableObject {
   
   public private(set) var wordsToPlay = [WordModel]()
   private var wordsMissedInRound = [WordModel]()
-  public private(set) var wordsPlayedInTurn: [PlayedWord] = []
+  @Published public private(set) var wordsPlayedInTurn: [PlayedWord] = []
   
   @Published public private(set) var currentWord: WordModel? = nil
   

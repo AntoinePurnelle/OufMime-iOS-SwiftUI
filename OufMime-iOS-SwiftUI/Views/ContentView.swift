@@ -41,4 +41,12 @@ struct ContentView_Previews: PreviewProvider {
 final class AppState: ObservableObject {
   @Published var welcomeScreenId = UUID()
   @Published var turnStartScreenId = UUID()
+  
+  func popToTurnStart() {
+    turnStartScreenId = UUID()
+  }
+  
+  func popToWelcome() {
+    welcomeScreenId = UUID()
+  }
 }

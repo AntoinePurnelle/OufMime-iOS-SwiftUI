@@ -62,22 +62,36 @@ struct RoundIconButton: View {
   
   var body: some View {
     Button(action: action) {
-      ZStack {
-        Circle()
-          .fill(backgroungColor)
-          .frame(
-            width: dimens.iconMedium,
-            height: dimens.iconMedium)
-        
-        Image(systemName: systemName)
-          .resizable()
-          .frame(
-            width: dimens.iconSmall,
-            height: dimens.iconSmall
-          )
-          .font(.title)
-          .foregroundColor(.white)
-      }
+      RoundIcon(
+        systemName: systemName,
+        backgroungColor: backgroungColor,
+        size: dimens.iconMedium
+      )
+    }
+  }
+}
+
+struct RoundIcon:View {
+  var systemName: String
+  var backgroungColor: Color
+  var size: CGFloat
+  
+  var body: some View {
+    ZStack {
+      Circle()
+        .fill(backgroungColor)
+        .frame(
+          width: size,
+          height: size)
+      
+      Image(systemName: systemName)
+        .resizable()
+        .frame(
+          width: size / 2,
+          height: size / 2
+        )
+        .font(.title)
+        .foregroundColor(.white)
     }
   }
 }
