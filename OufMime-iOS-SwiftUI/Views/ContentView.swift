@@ -10,16 +10,17 @@ import CoreData
 
 struct ContentView: View {
   @StateObject var vm = WordsViewModel()
-  @StateObject var dimens = Dimens()
   @ObservedObject var appState = AppState()
+  @Environment(\.horizontalSizeClass) var horizontalSizeClass
   
   var body: some View {
     NavigationView {
       WelcomeScreen()
       .id(appState.welcomeScreenId)
     }
+    .navigationViewStyle(StackNavigationViewStyle())
     .environmentObject(vm)
-    .environmentObject(dimens)
+    .environmentObject(Dimens(isLarge: horizontalSizeClass == .regular))
     .environmentObject(appState)
   }
   
@@ -33,7 +34,13 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
   static var previews: some View {
-    ContentView()
+    Group {
+      ContentView()
+        .previewDevice("iPhone 13")
+      ContentView()
+        .previewInterfaceOrientation(.landscapeLeft)
+        .previewDevice("iPad Pro (9.7-inch)")
+    }
   }
 }
 

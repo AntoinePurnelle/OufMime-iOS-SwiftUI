@@ -93,7 +93,7 @@ struct RoundIconButton: View {
       RoundIcon(
         systemName: systemName,
         backgroungColor: backgroungColor,
-        size: dimens.iconMedium
+        size: dimens.iconLarge
       )
     }
   }

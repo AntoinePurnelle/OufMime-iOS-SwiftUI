@@ -11,6 +11,7 @@ struct TurnStartScreen: View {
   @State var isPlaying = false
   @EnvironmentObject var vm: WordsViewModel
   @EnvironmentObject var dimens: Dimens
+  @Environment(\.horizontalSizeClass) var horizontalSizeClass
   
   var body: some View {
     let background = vm.shouldInvertColors ? Color.accentColor : Color.primaryColor
@@ -29,11 +30,22 @@ struct TurnStartScreen: View {
         )
         .frame(maxHeight: .infinity)
         
-        TitleTextView(text: "Manche \(vm.currentRound + 1) :\n\(roundName)", color: .white)
+        if horizontalSizeClass == .regular {
+          Spacer()
+            .frame(maxHeight: 80)
+        }
+        
+        let separator = horizontalSizeClass == .regular ? " " : "\n"
+        
+        TitleTextView(
+          text: "Manche \(vm.currentRound + 1) :\(separator + roundName)",
+          color: .white
+        )
+        .frame(maxHeight: .infinity)
         
         NavigationLink(
           destination: PlayScreen()
-          .navigationBarHidden(true),
+            .navigationBarHidden(true),
           isActive: $isPlaying
         ) {
           SizedButton(
@@ -48,7 +60,6 @@ struct TurnStartScreen: View {
         }
         .isDetailLink(false)
       }.padding()
-      
     }
   }
   
@@ -65,8 +76,17 @@ struct TurnStartScreen: View {
 
 struct TurnStartScreen_Previews: PreviewProvider {
   static var previews: some View {
-    TurnStartScreen()
-    .environmentObject(WordsViewModel())
-    .environmentObject(Dimens())
+    Group {
+      TurnStartScreen()
+        .environmentObject(WordsViewModel())
+        .environmentObject(Dimens())
+        .previewDevice("iPhone 13")
+      
+      TurnStartScreen()
+        .environmentObject(WordsViewModel())
+        .environmentObject(Dimens(isLarge: true))
+        .previewInterfaceOrientation(.landscapeLeft)
+        .previewDevice("iPad Pro (12.9-inch) (5th generation)")
+    }
   }
 }

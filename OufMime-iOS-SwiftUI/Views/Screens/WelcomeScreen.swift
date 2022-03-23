@@ -56,9 +56,19 @@ struct WelcomeScreen: View {
 
 struct WelcomeScreen_Previews: PreviewProvider {
   static var previews: some View {
-    WelcomeScreen()
-      .environmentObject(WordsViewModel())
-      .environmentObject(Dimens())
-      .environmentObject(AppState())
+    Group {
+      WelcomeScreen()
+        .environmentObject(WordsViewModel())
+        .environmentObject(Dimens())
+        .environmentObject(AppState())
+        .previewDevice("iPhone 13")
+      
+      WelcomeScreen()
+        .environmentObject(WordsViewModel())
+        .environmentObject(Dimens(isLarge: true))
+        .environmentObject(AppState())
+        .previewInterfaceOrientation(.landscapeLeft)
+        .previewDevice("iPad Pro (9.7-inch)")
+    }
   }
 }

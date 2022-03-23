@@ -11,13 +11,23 @@ struct ScoreboardScreen: View {
   @EnvironmentObject var vm: WordsViewModel
   @EnvironmentObject var appState: AppState
   @EnvironmentObject var dimens: Dimens
+  @Environment(\.horizontalSizeClass) var horizontalSizeClass
   
   var body: some View {
     VStack(spacing: dimens.paddingXLarge) {
       
-      TeamScoreboardView(team: 0)
-      
-      TeamScoreboardView(team: 1)
+      if horizontalSizeClass == .regular {
+        HStack {
+          TeamScoreboardView(team: 0)
+            .frame(maxWidth: .infinity)
+          TeamScoreboardView(team: 1)
+            .frame(maxWidth: .infinity)
+        }
+        .padding()
+      } else {
+        TeamScoreboardView(team: 0)
+        TeamScoreboardView(team: 1)
+      }
       
       let buttonText  = vm.hasMoreRounds ? "Manche suivante !" : "Nouvelle partie !"
       
@@ -70,6 +80,14 @@ struct ScoreboardScreen_Previews: PreviewProvider {
       .environmentObject(WordsViewModel())
       .environmentObject(Dimens())
       .environmentObject(AppState())
+      .previewDevice("iPhone 13")
+    
+    ScoreboardScreen()
+      .environmentObject(WordsViewModel())
+      .environmentObject(AppState())
+      .environmentObject(Dimens(isLarge: true))
+      .previewInterfaceOrientation(.landscapeLeft)
+      .previewDevice("iPad Pro (12.9-inch) (5th generation)")
     
     TeamScoreboardView(team: 0)
       .environmentObject(WordsViewModel())

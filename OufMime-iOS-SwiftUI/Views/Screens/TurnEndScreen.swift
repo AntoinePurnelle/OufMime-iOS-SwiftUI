@@ -12,6 +12,7 @@ struct TurnEndScreen: View {
   @EnvironmentObject var dimens: Dimens
   @EnvironmentObject var appState: AppState
   @State var showScoreboard = false
+  @Environment(\.horizontalSizeClass) var horizontalSizeClass
   
   var body: some View {
     let background = vm.shouldInvertColors ? Color.accentColor : Color.primaryColor
@@ -23,27 +24,12 @@ struct TurnEndScreen: View {
         .edgesIgnoringSafeArea(.all)
       
       VStack(spacing: dimens.paddingLarge) {
-        AppIcon(inverted: vm.shouldInvertColors)
-          .frame(width: dimens.iconMedium, height: dimens.iconMedium)
         
-        ScoreboardView(
-          topLabel: "Trouvés",
-          topScore: vm.wordsFoundInTurnCount,
-          bottomLabel: "Manqués",
-          bottomScore: vm.wordsMissedInTurnCount,
-          color: .white
-        )
-        
-        List(0..<vm.wordsPlayedInTurn.count, id: \.self) { index in
-          let wordPlayed = vm.wordsPlayedInTurn[index]
-          
-          Button(action: {
-            vm.changeValueInPlayedWords(atRow: index)
-          }) {
-            WordPlayedView(word: wordPlayed.word, wasFound: wordPlayed.found)
-          }
+        if horizontalSizeClass == .regular {
+          TabletTurnEndView()
+        } else {
+          PhoneTurnEndView()
         }
-        .frame(maxHeight: .infinity)
         
         NavigationLink(
           destination: ScoreboardScreen()
@@ -71,6 +57,66 @@ struct TurnEndScreen: View {
   }
 }
 
+struct PhoneTurnEndView: View {
+  @EnvironmentObject var dimens: Dimens
+  
+  var body: some View {
+    VStack(spacing: dimens.paddingLarge) {
+      TurnEndScoreboardView()
+      WordsListView()
+    }
+  }
+}
+
+struct TabletTurnEndView: View {
+  var body: some View {
+    HStack {
+      Spacer()
+      TurnEndScoreboardView()
+      Spacer()
+      WordsListView()
+      Spacer()
+    }
+  }
+}
+
+struct WordsListView: View {
+  @EnvironmentObject var vm: WordsViewModel
+  
+  var body: some View {
+    List(0..<vm.wordsPlayedInTurn.count, id: \.self) { index in
+      let wordPlayed = vm.wordsPlayedInTurn[index]
+      
+      Button(action: {
+        vm.changeValueInPlayedWords(atRow: index)
+      }) {
+        WordPlayedView(word: wordPlayed.word, wasFound: wordPlayed.found)
+      }
+    }
+    .frame(maxWidth: 600, maxHeight: .infinity)
+  }
+}
+
+struct TurnEndScoreboardView: View {
+  @EnvironmentObject var vm: WordsViewModel
+  @EnvironmentObject var dimens: Dimens
+  
+  var body: some View {
+    VStack(spacing: dimens.paddingLarge) {
+      AppIcon(inverted: vm.shouldInvertColors)
+        .frame(width: dimens.iconLarge, height: dimens.iconLarge)
+      
+      ScoreboardView(
+        topLabel: "Trouvés",
+        topScore: vm.wordsFoundInTurnCount,
+        bottomLabel: "Manqués",
+        bottomScore: vm.wordsMissedInTurnCount,
+        color: .white
+      )
+    }
+  }
+}
+
 struct WordPlayedView: View {
   @EnvironmentObject var dimens: Dimens
   
@@ -86,7 +132,7 @@ struct WordPlayedView: View {
       RoundIcon(
         systemName: wasFound ? "checkmark" : "xmark",
         backgroungColor: wasFound ? .greenColor : .redColor,
-        size: 24
+        size: dimens.iconSmall
       )
     }
     .padding(.horizontal, dimens.paddingMedium)
@@ -100,6 +146,14 @@ struct TurnEndScreen_Previews: PreviewProvider {
       .environmentObject(WordsViewModel())
       .environmentObject(Dimens())
       .environmentObject(AppState())
+      .previewDevice("iPhone 13")
+    
+    TurnEndScreen()
+      .environmentObject(WordsViewModel())
+      .environmentObject(AppState())
+      .environmentObject(Dimens(isLarge: true))
+      .previewInterfaceOrientation(.landscapeLeft)
+      .previewDevice("iPad Pro (12.9-inch) (5th generation)")
     
     WordPlayedView(
       word: WordModel(word: "Octopus", category: .animals),

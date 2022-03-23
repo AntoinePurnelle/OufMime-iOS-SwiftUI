@@ -28,7 +28,7 @@ struct HeaderView: View {
       )
       
       AppIcon(inverted: true)
-        .frame(width: dimens.iconSmall, height: dimens.iconSmall)
+        .frame(width: dimens.iconMedium, height: dimens.iconMedium)
       
       ScoreboardView(
         topLabel: "Total",
@@ -41,8 +41,10 @@ struct HeaderView: View {
     }
     .padding(dimens.paddingLarge)
     .background(
-      RoundedRectangle(cornerRadius: dimens.cornerRadiusLarge)
-        .fill(Color.white)
+      RoundedRectangle(
+        cornerRadius: dimens.cornerRadiusLarge
+      )
+      .fill(Color.white)
     )
   }
 }
@@ -65,7 +67,7 @@ struct ScoreboardView: View {
     .background(
       RoundedRectangle(cornerRadius: dimens.cornerRadiusMedium)
         .strokeBorder(color, lineWidth: dimens.borderSmall)
-    ).frame(maxWidth: 120)
+    ).frame(maxWidth: dimens.simpleScoreboardWidth)
   }
 }
 

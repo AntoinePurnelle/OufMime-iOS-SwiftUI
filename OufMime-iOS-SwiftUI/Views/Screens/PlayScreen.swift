@@ -11,6 +11,7 @@ import AVFoundation
 struct PlayScreen: View {
   @EnvironmentObject var vm: WordsViewModel
   @EnvironmentObject var dimens: Dimens
+  @Environment(\.horizontalSizeClass) var horizontalSizeClass
   
   @State var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
   @State var player: AVAudioPlayer? = nil
@@ -84,6 +85,7 @@ struct PlayScreen: View {
           ) { }
             .isDetailLink(false)
         }
+        .padding(.horizontal, horizontalSizeClass == .regular ?  200 : 0)
         .frame(maxHeight: .infinity)
       }
       .padding(20)
@@ -114,7 +116,7 @@ struct PlayScreen: View {
         
         try AVAudioSession.sharedInstance().setActive(true)
         
-        if (isTimerSound) {
+        if isTimerSound {
           timerPlayer = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileType.wav.rawValue)
           timerPlayer!.play()
         } else {
@@ -196,6 +198,13 @@ struct PlayScreen_Previews: PreviewProvider {
     PlayScreen()
       .environmentObject(WordsViewModel())
       .environmentObject(Dimens())
+      .previewDevice("iPhone 13")
+    
+    PlayScreen()
+      .environmentObject(WordsViewModel())
+      .environmentObject(Dimens(isLarge: true))
+      .previewInterfaceOrientation(.landscapeLeft)
+      .previewDevice("iPad Pro (9.7-inch)")
     
     TimerView(value: Binding.constant(40), maxValue: 60, invertColors: false)
       .environmentObject(Dimens())
