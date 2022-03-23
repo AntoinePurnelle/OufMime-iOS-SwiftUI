@@ -44,7 +44,7 @@ struct TeamScoreboardView: View {
   
   var body: some View {
     VStack(spacing: dimens.paddingMedium) {
-      TitleTextView(text: "Les Bleus", color: .accentColor)
+      TitleTextView(text: team == 0 ? "Les Bleus" : "Les Oranges", color: .accentColor)
       
       ScoreLineView(scoreName: "Décrire", score: vm.getScore(inRound: 0, forTeam: team), color: .accentColor)
       

@@ -12,7 +12,6 @@ struct PlayScreen: View {
   @EnvironmentObject var vm: WordsViewModel
   @EnvironmentObject var dimens: Dimens
   
-  @State var timerCurrentValue: Int = 10
   @State var timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
   @State var player: AVAudioPlayer? = nil
   @State var timerPlayer: AVAudioPlayer? = nil
@@ -36,19 +35,19 @@ struct PlayScreen: View {
           .frame(maxWidth: .infinity)
           
           TimerView(
-            value: $timerCurrentValue,
+            value: $vm.timerCurrentValue,
             maxValue: vm.timerTotalTime,
             invertColors: vm.shouldInvertColors
           )
           .frame(maxWidth: .infinity)
           .onReceive(timer) { value in
-            timerCurrentValue -= 1
+            vm.timerCurrentValue -= 1
             
-            if timerCurrentValue == 4 {
+            if vm.timerCurrentValue == 4 {
               play(sound: "timer.wav", isTimerSound: true)
             }
             
-            if timerCurrentValue <= 0 {
+            if vm.timerCurrentValue <= 0 {
               play(sound: "times_up.wav")
               timer.upstream.connect().cancel()
               vm.playWord(wasFound: false, timerEnded: true)

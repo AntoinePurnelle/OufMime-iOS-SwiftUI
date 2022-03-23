@@ -14,15 +14,16 @@ class WordsViewModel: ObservableObject {
   private var repo: WordRepository!
   
   // Game Settings
-  public private(set) var timerTotalTime: Int = 10
-  public private(set) var wordsCount = 10
-  public var categories = Dictionary(uniqueKeysWithValues: Category.allCases.map { ($0.rawValue, true) })
+  @Published public var timerTotalTime = 10
+  @Published public var timerCurrentValue = 10
+  @Published public var wordsCount = 10
+  @Published public var categories =  Category.allCases.map { SelectableCategory(id: $0, selected: true) }
   private var selectedCategories: [String] {
     get {
-      categories.filter { (_, isSelected) in
-        isSelected
-      }.map { (category, _) in
-        category
+      categories.filter { selectableCategory in
+        selectableCategory.selected
+      }.map { selectedCategory in
+        selectedCategory.id.rawValue
       }
     }
   }
@@ -157,6 +158,7 @@ extension WordsViewModel {
   func initTurn() {
     wordsPlayedInTurn.removeAll()
     currentWord = wordsToPlay.first
+    timerCurrentValue = timerTotalTime
   }
   
   func playWord(wasFound: Bool, timerEnded: Bool = false) {

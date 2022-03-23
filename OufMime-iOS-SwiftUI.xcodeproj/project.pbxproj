@@ -225,11 +225,11 @@
 			isa = PBXGroup;
 			children = (
 				AEEDCD1A27E8AD58004977D7 /* PlayScreen.swift */,
+				AE3C86FC27EA1A8100030154 /* ScoreboardScreen.swift */,
 				AE4A10D127E4D36500357677 /* SettingsScreen.swift */,
 				AEEDCD1C27E8D11B004977D7 /* TurnEndScreen.swift */,
 				AEEDCD1827E87C99004977D7 /* TurnStartScreen.swift */,
 				AE4A10C427E4B56100357677 /* WelcomeScreen.swift */,
-				AE3C86FC27EA1A8100030154 /* ScoreboardScreen.swift */,
 			);
 			path = Screens;
 			sourceTree = "<group>";

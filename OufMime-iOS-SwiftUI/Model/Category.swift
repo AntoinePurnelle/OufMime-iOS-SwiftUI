@@ -27,3 +27,8 @@ enum Category: String, Codable, CaseIterable {
   case vehicles = "Véhicules"
   
 }
+
+struct SelectableCategory: Identifiable {
+  var id: Category
+  var selected: Bool
+}
