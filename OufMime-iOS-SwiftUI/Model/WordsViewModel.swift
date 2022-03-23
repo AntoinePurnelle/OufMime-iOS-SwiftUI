@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 typealias PlayedWord = (word: WordModel, found: Bool)
 
@@ -66,6 +67,10 @@ extension WordsViewModel {
     get { wordsToPlay.count > 0 }
   }
   
+  var hasMoreRounds: Bool {
+    get { currentRound < 2 }
+  }
+  
   func getScore(inRound round: Int, forTeam team: Int) -> Int {
     return currentRound < round ? -1 : teamWords[team][round].count
   }
@@ -103,6 +108,14 @@ extension WordsViewModel {
   
   var currentTeamName: String {
     get { currentTeam == 0 ? "Les Bleus" : "Les Oranges" }
+  }
+  
+  func getColor(forteam team: Int) -> Color {
+    switch (team) {
+    case 0: return .accentColor
+    case 1: return .primaryColor
+    default: return .white
+    }
   }
   
 }

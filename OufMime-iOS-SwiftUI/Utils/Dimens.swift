@@ -17,6 +17,9 @@ class Dimens: ObservableObject {
   var mediumButtonText = CGFloat(24.0)
   var bigButtonText = CGFloat(32.0)
   
+  var simpleScoreboardWidth = CGFloat(120.0)
+  var fullScoreboardWifth = CGFloat(200.0)
+  
   var paddingXSmall = CGFloat(2.0)
   var paddingSmall = CGFloat(4.0)
   var paddingMedium = CGFloat(8.0)

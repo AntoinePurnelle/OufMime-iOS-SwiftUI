@@ -157,9 +157,7 @@ struct TimerView: View {
         .rotationEffect(Angle(degrees: 270.0))
         .animation(.linear, value: value)
       
-      Text(String(value))
-        .font(.custom(Constants.font, size: dimens.bigTitleText))
-        .foregroundColor(color)
+      BigTitleTextView(text: String(value), color: color)
     }
     .frame(width: dimens.timerSize, height: dimens.timerSize)
     .padding()
@@ -174,10 +172,10 @@ struct WordCardView: View {
   var body: some View {
     VStack(spacing: 8) {
       if let word = word {
-        Text(word.word)
-          .font(.custom(Constants.font, size: dimens.titleText))
-          .multilineTextAlignment(.center)
-          .foregroundColor(.accentColor)
+        TitleTextView(
+          text: word.word,
+          color: .accentColor
+        )
         Text(word.category.rawValue)
           .font(.custom(Constants.font, size: dimens.subtitleText))
           .multilineTextAlignment(.center)

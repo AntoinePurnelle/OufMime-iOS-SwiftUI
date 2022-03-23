@@ -18,10 +18,26 @@ struct HeaderView: View {
   
   var body: some View {
     HStack(spacing: dimens.paddingXLarge) {
-      ScoreboardView(topLabel: "Total", topScore: team1TotalScore, bottomLabel: "Round", bottomScore: team1RoundScore, color: .accentColor)
+      
+      ScoreboardView(
+        topLabel: "Total",
+        topScore: team1TotalScore,
+        bottomLabel: "Round",
+        bottomScore: team1RoundScore,
+        color: .accentColor
+      )
+      
       AppIcon(inverted: true)
         .frame(width: dimens.iconSmall, height: dimens.iconSmall)
-      ScoreboardView(topLabel: "Total", topScore: team2TotalScore, bottomLabel: "Round", bottomScore: team1RoundScore, color: .primaryColor)
+      
+      ScoreboardView(
+        topLabel: "Total",
+        topScore: team2TotalScore,
+        bottomLabel: "Round",
+        bottomScore: team2RoundScore,
+        color: .primaryColor
+      )
+      
     }
     .padding(dimens.paddingLarge)
     .background(
@@ -42,8 +58,8 @@ struct ScoreboardView: View {
   
   var body: some View {
     VStack {
-      ScorelineView(scoreName: topLabel, score: topScore, color: color)
-      ScorelineView(scoreName: bottomLabel, score: bottomScore, color: color)
+      ScoreLineView(scoreName: topLabel, score: topScore, color: color)
+      ScoreLineView(scoreName: bottomLabel, score: bottomScore, color: color)
     }
     .padding(dimens.paddingMedium)
     .background(
@@ -53,7 +69,7 @@ struct ScoreboardView: View {
   }
 }
 
-struct ScorelineView: View {
+struct ScoreLineView: View {
   @EnvironmentObject var dimens: Dimens
   
   var scoreName: String
@@ -61,10 +77,20 @@ struct ScorelineView: View {
   var color: Color
   
   var body: some View {
+    let scoreText = score == -1 ? "--" : String(score)
+    
     HStack() {
-      BodyTextView(text: scoreName, color: color)
+      BodyTextView(
+        text: scoreName,
+        color: color
+      )
+      
       Spacer()
-      BodyTextView(text: String(score), color: color)
+      
+      BodyTextView(
+        text: scoreText,
+        color: color
+      )
     }
   }
 }
@@ -76,7 +102,7 @@ struct Scoreboard_Previews: PreviewProvider {
       HeaderView(team1TotalScore: 42, team1RoundScore: 9, team2TotalScore: 24, team2RoundScore: 4, invertColors: true)
       ScoreboardView(topLabel: "Total", topScore: 42, bottomLabel: "Round", bottomScore: 9, color: .primaryColor)
         .frame(width: 100)
-      ScorelineView(scoreName: "Total", score: 42, color: .primaryColor)
+      ScoreLineView(scoreName: "Total", score: 42, color: .primaryColor)
         .frame(width: 100)
     }
     .environmentObject(Dimens())

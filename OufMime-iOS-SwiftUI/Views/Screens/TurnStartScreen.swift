@@ -29,11 +29,7 @@ struct TurnStartScreen: View {
         )
         .frame(maxHeight: .infinity)
         
-        Text("Manche \(vm.currentRound + 1) :\n\(roundName)")
-          .foregroundColor(.white)
-          .font(.custom(Constants.font, size: dimens.titleText))
-          .multilineTextAlignment(.center)
-          .frame(maxHeight: .infinity)
+        TitleTextView(text: "Manche \(vm.currentRound + 1) :\n\(roundName)", color: .white)
         
         NavigationLink(
           destination: PlayScreen()

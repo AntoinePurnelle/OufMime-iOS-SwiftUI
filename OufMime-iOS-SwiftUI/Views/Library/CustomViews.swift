@@ -41,6 +41,34 @@ struct BodyTextView: View {
   }
 }
 
+struct TitleTextView: View {
+  @EnvironmentObject var dimens: Dimens
+  
+  var text: String
+  var color: Color = .black
+  
+  var body: some View {
+    Text(text)
+      .font(.custom(Constants.font, size: dimens.titleText))
+      .multilineTextAlignment(.center)
+      .foregroundColor(color)
+  }
+}
+
+struct BigTitleTextView: View {
+  @EnvironmentObject var dimens: Dimens
+  
+  var text: String
+  var color: Color = .black
+  
+  var body: some View {
+    Text(text)
+      .font(.custom(Constants.font, size: dimens.bigTitleText))
+      .multilineTextAlignment(.center)
+      .foregroundColor(color)
+  }
+}
+
 struct AppIcon: View {
   @EnvironmentObject var dimens: Dimens
   
