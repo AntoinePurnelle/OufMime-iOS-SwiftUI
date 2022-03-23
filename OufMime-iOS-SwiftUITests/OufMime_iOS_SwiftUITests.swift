@@ -10,27 +10,100 @@ import XCTest
 
 class OufMime_iOS_SwiftUITests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
+  private var vm: WordsViewModel!
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+  override func setUpWithError() throws {
+    vm = WordsViewModel()
+    vm.editGamesSettings(withWordsCount: 4, turnDuration: 10.0)
+    vm.initGame {
     }
+  }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
-    }
+  override func tearDownWithError() throws {
+    vm = nil
+  }
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
+  func testGameInit() throws {
+    XCTAssertEqual(vm.currentTeam, 0)
+    XCTAssertEqual(vm.currentRound, 0)
+  }
+
+  func testTurnInit() {
+    XCTAssertEqual(vm.currentTeam, 0)
+    XCTAssertEqual(vm.currentRound, 0)
+    XCTAssertFalse(vm.hasMoreWords)
+
+    vm.initRound()
+    vm.initTurn()
+
+    XCTAssertEqual(vm.wordsPlayedInTurn.count, 0)
+    XCTAssertNotNil(vm.currentWord)
+    XCTAssertTrue(vm.hasMoreWords)
+  }
+
+  func testFullRound() {
+    // ROUND 1
+    vm.initRound()
+    XCTAssertEqual(vm.wordsToPlay.count, 4)
+    
+    // ROUND 1 TEAM 1
+    vm.initTurn()
+    vm.playWord(wasFound: true, timerEnded: false)
+    vm.playWord(wasFound: false, timerEnded: false)
+    vm.playWord(wasFound: false, timerEnded: true)
+    vm.finishTurn()
+
+    print(vm.getScore(inRound: 0, forTeam: 0))
+
+    XCTAssertEqual(vm.getScore(inRound: 0, forTeam: 0), 1)
+    XCTAssertEqual(vm.getTotalScore(forTeam: 0), 1)
+    XCTAssertEqual(vm.getCurrentRoundScore(forTeam: 0), 1)
+
+    XCTAssertEqual(vm.getScore(inRound: 0, forTeam: 1), 0)
+    XCTAssertEqual(vm.getTotalScore(forTeam: 1), 0)
+    XCTAssertEqual(vm.getCurrentRoundScore(forTeam: 1), 0)
+
+    XCTAssertEqual(vm.wordsFoundInTurnCount, 1)
+    XCTAssertEqual(vm.wordsMissedInTurnCount, 2)
+    XCTAssertEqual(vm.wordsPlayedInTurn.count, 3)
+
+    XCTAssertEqual(vm.currentTeam, 1)
+    XCTAssertEqual(vm.wordsToPlay.count, 3)
+    
+    // ROUND 1 TEAM 2
+
+    vm.initTurn()
+    vm.playWord(wasFound: true, timerEnded: false)
+    vm.playWord(wasFound: false, timerEnded: false)
+    vm.playWord(wasFound: true, timerEnded: false)
+    vm.changeValueInPlayedWords(atRow: 1)
+    vm.finishTurn()
+
+    XCTAssertEqual(vm.getScore(inRound: 0, forTeam: 0), 1)
+    XCTAssertEqual(vm.getTotalScore(forTeam: 0), 1)
+    XCTAssertEqual(vm.getCurrentRoundScore(forTeam: 0), 1)
+
+    XCTAssertEqual(vm.getScore(inRound: 0, forTeam: 1), 3)
+    XCTAssertEqual(vm.getTotalScore(forTeam: 1), 3)
+    XCTAssertEqual(vm.getCurrentRoundScore(forTeam: 1), 3)
+
+    XCTAssertEqual(vm.wordsFoundInTurnCount, 3)
+    XCTAssertEqual(vm.wordsMissedInTurnCount, 0)
+    XCTAssertEqual(vm.wordsPlayedInTurn.count, 3)
+    
+    XCTAssertEqual(vm.currentTeam, 0)
+    XCTAssertEqual(vm.wordsToPlay.count, 0)
+    
+    vm.finishRound()
+    
+    // ROUND 2
+    vm.initRound()
+    
+    XCTAssertEqual(vm.currentRound, 1)
+    XCTAssertEqual(vm.wordsToPlay.count, 4)
+    
+    XCTAssertEqual(vm.getCurrentRoundScore(forTeam: 0), 0)
+    XCTAssertEqual(vm.getCurrentRoundScore(forTeam: 1), 0)
+  }
 
 }

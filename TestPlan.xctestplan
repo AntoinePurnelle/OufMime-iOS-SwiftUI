@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "16FF71E4-15AC-4BCC-AEDA-93B48126EAEA",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:OufMime-iOS-SwiftUI.xcodeproj",
+        "identifier" : "AE1AB19127E3804300264774",
+        "name" : "OufMime-iOS-SwiftUITests"
+      }
+    }
+  ],
+  "version" : 1
+}
