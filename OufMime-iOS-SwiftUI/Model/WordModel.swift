@@ -12,15 +12,22 @@ class WordModel: Identifiable {
   
   let word: String
   let category: Category
+  let language: String
   
-  init(word: String, category: Category) {
+  init(word: String, category: Category, language: String) {
     self.word = word
     self.category = category
+    self.language = language
   }
 }
 
 struct Words: Codable {
   let version: Int
+  let en: TranslatedWords
+  let fr: TranslatedWords
+}
+
+struct TranslatedWords: Codable {
   let actions: [String]
   let activities: [String]
   let anatomy: [String]

@@ -16,7 +16,7 @@ struct WelcomeScreen: View {
   
   var body: some View {
     VStack(alignment: .center, spacing: .leastNormalMagnitude) {
-      Text("OufMime!")
+      Text("app_name")
         .foregroundColor(.primaryColor)
         .font(.custom(Constants.font, size: dimens.bigTitleText))
         .fontWeight(.bold)
@@ -28,7 +28,7 @@ struct WelcomeScreen: View {
           .id(appState.turnStartScreenId),
         isActive: $hasGameStarted
       ) {
-        SizedButton(text: "Jouer !", textSize: .big) {
+        SizedButton(text: "start", textSize: .big) {
           vm.initGame {
             vm.initRound()
             hasGameStarted = true
@@ -43,7 +43,7 @@ struct WelcomeScreen: View {
         isActive: $isShowingSettings
       ) {
         Button(action: { isShowingSettings = true }) {
-          Text("Paramètres")
+          Text("settings")
             .font(.custom(Constants.font, size: dimens.bodyText))
             .foregroundColor(.gray)
         }
@@ -62,6 +62,7 @@ struct WelcomeScreen_Previews: PreviewProvider {
         .environmentObject(Dimens())
         .environmentObject(AppState())
         .previewDevice("iPhone 13")
+        .environment(\.locale, .init(identifier: "en"))
       
       WelcomeScreen()
         .environmentObject(WordsViewModel())
@@ -69,6 +70,7 @@ struct WelcomeScreen_Previews: PreviewProvider {
         .environmentObject(AppState())
         .previewInterfaceOrientation(.landscapeLeft)
         .previewDevice("iPad Pro (9.7-inch)")
+        .environment(\.locale, .init(identifier: "fr"))
     }
   }
 }

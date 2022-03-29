@@ -14,9 +14,9 @@ typealias OnCompletedWords = (_ words: [WordModel]) -> Void
 typealias OnError = (_ message: String) -> Void
 
 protocol WordRepository {
-  func fetch(word: String, onCompleted: OnCompletedWord, onError: OnError)
+  func fetch(word: String, inLanguage language: String, onCompleted: OnCompletedWord, onError: OnError)
   func fetchAllWords(onCompleted: OnCompletedWords, onError: OnError)
-  func fetchRandomWords(inCategories categories: [String], withCount count: Int, onCompleted: OnCompletedWords, onError: OnError)
+  func fetchRandomWords(inCategories categories: [String], withCount count: Int, inLanguage language: String, onCompleted: OnCompletedWords, onError: OnError)
   
   func insert(word: WordModel, onCompleted: OnCompleted, onError: OnError)
   func insert(words: [WordModel], onCompleted: OnCompleted, onError: OnError)
@@ -38,10 +38,10 @@ struct WordRepositoryImpl: WordRepository {
     container.viewContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
   }
   
-  func fetch(word: String, onCompleted: OnCompletedWord, onError: OnError) {
+  func fetch(word: String, inLanguage language: String, onCompleted: OnCompletedWord, onError: OnError) {
     let request = WordEntity.fetchRequest()
     request.fetchLimit = 1
-    request.predicate = NSPredicate(format: "word = %@", word)
+    request.predicate = NSPredicate(format: "word = %@ and language = %@", word, language)
     
     do {
       onCompleted(getWord(fromEntity: try container.viewContext.fetch(request)[0]))
@@ -62,10 +62,10 @@ struct WordRepositoryImpl: WordRepository {
     }
   }
   
-  func fetchRandomWords(inCategories categories: [String], withCount count: Int, onCompleted: OnCompletedWords, onError: OnError) {
+  func fetchRandomWords(inCategories categories: [String], withCount count: Int, inLanguage language: String, onCompleted: OnCompletedWords, onError: OnError) {
     
     let request = WordEntity.fetchRequest()
-    request.predicate = NSPredicate(format: "category in %@", categories)
+    request.predicate = NSPredicate(format: "category in %@ and language = %@", categories, language)
     
     do {
       var wordEntities = try container.viewContext.fetch(request)
@@ -99,12 +99,13 @@ struct WordRepositoryImpl: WordRepository {
   }
   
   func getWord(fromEntity entity: WordEntity) -> WordModel {
-    return WordModel(word: entity.word!, category: Category(rawValue: entity.category!)!)
+    return WordModel(word: entity.word!, category: Category(rawValue: entity.category!)!, language: entity.language!)
   }
   
   func createWordEntity(fromWord word: WordModel) {
     let wordEntity = WordEntity(context: container.viewContext)
     wordEntity.word = word.word
     wordEntity.category = word.category.rawValue
+    wordEntity.language = word.language
   }
 }

@@ -29,10 +29,10 @@ struct ScoreboardScreen: View {
         TeamScoreboardView(team: 1)
       }
       
-      let buttonText  = vm.hasMoreRounds ? "Manche suivante !" : "Nouvelle partie !"
+      let buttonText  = vm.hasMoreRounds ? "next_round" : "new_game"
       
       SizedButton(
-        text: buttonText.uppercased(),
+        text: buttonText,
         onClick: {
           if vm.hasMoreRounds {
             vm.finishRound()
@@ -54,13 +54,13 @@ struct TeamScoreboardView: View {
   
   var body: some View {
     VStack(spacing: dimens.paddingMedium) {
-      TitleTextView(text: team == 0 ? "Les Bleus" : "Les Oranges", color: .accentColor)
+      TitleTextView(text: team == 0 ? "team_blue" : "team_orange", color: .accentColor)
       
-      ScoreLineView(scoreName: "Décrire", score: vm.getScore(inRound: 0, forTeam: team), color: .accentColor)
+      ScoreLineView(scoreName: "describe", score: vm.getScore(inRound: 0, forTeam: team), color: .accentColor)
       
-      ScoreLineView(scoreName: "Un mot", score: vm.getScore(inRound: 1, forTeam: team), color: .accentColor)
+      ScoreLineView(scoreName: "word", score: vm.getScore(inRound: 1, forTeam: team), color: .accentColor)
       
-      ScoreLineView(scoreName: "Mimer", score: vm.getScore(inRound: 2, forTeam: team), color: .accentColor)
+      ScoreLineView(scoreName: "mime", score: vm.getScore(inRound: 2, forTeam: team), color: .accentColor)
       
       TitleTextView(text: String(vm.getTotalScore(forTeam: team)), color: .accentColor)
     }
@@ -81,6 +81,7 @@ struct ScoreboardScreen_Previews: PreviewProvider {
       .environmentObject(Dimens())
       .environmentObject(AppState())
       .previewDevice("iPhone 13")
+      .environment(\.locale, .init(identifier: "fr"))
     
     ScoreboardScreen()
       .environmentObject(WordsViewModel())
@@ -88,6 +89,7 @@ struct ScoreboardScreen_Previews: PreviewProvider {
       .environmentObject(Dimens(isLarge: true))
       .previewInterfaceOrientation(.landscapeLeft)
       .previewDevice("iPad Pro (12.9-inch) (5th generation)")
+      .environment(\.locale, .init(identifier: "en"))
     
     TeamScoreboardView(team: 0)
       .environmentObject(WordsViewModel())

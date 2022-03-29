@@ -20,17 +20,17 @@ struct SettingsScreen: View {
     
     return VStack(spacing: dimens.paddingXLarge) {
       
-      SettingsTextField(label: "Durée des tours (s)", value: $vm.timerTotalTime)
+      SettingsTextField(label: "duration", value: $vm.timerTotalTime)
       
-      SettingsTextField(label: "Nombre de mots", value: $vm.wordsCount)
+      SettingsTextField(label: "words_count", value: $vm.wordsCount)
       
       ScrollView {
         ForEach($vm.categories) { selectableCategory in
-          Toggle(selectableCategory.id.rawValue, isOn: selectableCategory.selected)
+          Toggle(LocalizedStringKey(selectableCategory.id.rawValue), isOn: selectableCategory.selected)
         }.padding()
       }
       
-      SizedButton(text: "Back", textSize: .big) {
+      SizedButton(text: "back", textSize: .big) {
         appState.popToWelcome()
       }
     }
@@ -44,7 +44,7 @@ struct SettingsTextField: View {
   
   var body: some View {
     VStack(alignment: .leading) {
-      Text(label)
+      Text(LocalizedStringKey(label))
       TextField(
         label,
         text: Binding(
@@ -78,5 +78,14 @@ struct SettingsScreen_Previews: PreviewProvider {
       .environmentObject(Dimens())
       .environmentObject(AppState())
       .environmentObject(WordsViewModel())
+      .previewDevice("iPhone 13")
+      .environment(\.locale, .init(identifier: "fr"))
+    
+    SettingsScreen()
+      .environmentObject(Dimens())
+      .environmentObject(AppState())
+      .environmentObject(WordsViewModel())
+      .previewDevice("iPad Pro (12.9-inch) (5th generation)")
+      .environment(\.locale, .init(identifier: "en"))
   }
 }

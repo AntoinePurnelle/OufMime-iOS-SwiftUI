@@ -35,12 +35,18 @@ struct TurnStartScreen: View {
             .frame(maxHeight: 80)
         }
         
-        let separator = horizontalSizeClass == .regular ? " " : "\n"
-        
-        TitleTextView(
-          text: "Manche \(vm.currentRound + 1) :\(separator + roundName)",
-          color: .white
-        )
+        VStack {
+          TitleLocalizedTextView(
+            localizedText: LocalizedStringKey("round \(vm.currentRound + 1)"),
+            color: .white
+          )
+          TitleTextView(
+            text: roundName,
+            color: .white,
+            textCase: .uppercase,
+            fontWeight: .bold
+          )
+        }
         .frame(maxHeight: .infinity)
         
         NavigationLink(
@@ -49,7 +55,7 @@ struct TurnStartScreen: View {
           isActive: $isPlaying
         ) {
           SizedButton(
-            text: "\(vm.currentTeamName), jouez !".uppercased(),
+            text: vm.currentTeam == 0 ? "team_blue_play" : "team_orange_play",
             invertColor: vm.shouldInvertColors,
             onClick: {
               vm.initTurn()
@@ -66,9 +72,9 @@ struct TurnStartScreen: View {
   var roundName: String {
     get {
       switch(vm.currentRound) {
-      case 0: return "Décrire"
-      case 1: return "Un mot"
-      default: return "Mimer"
+      case 0: return "describe"
+      case 1: return "word"
+      default: return "mime"
       }
     }
   }
@@ -81,12 +87,14 @@ struct TurnStartScreen_Previews: PreviewProvider {
         .environmentObject(WordsViewModel())
         .environmentObject(Dimens())
         .previewDevice("iPhone 13")
+        .environment(\.locale, .init(identifier: "fr"))
       
       TurnStartScreen()
         .environmentObject(WordsViewModel())
         .environmentObject(Dimens(isLarge: true))
         .previewInterfaceOrientation(.landscapeLeft)
         .previewDevice("iPad Pro (12.9-inch) (5th generation)")
+        .environment(\.locale, .init(identifier: "en"))
     }
   }
 }

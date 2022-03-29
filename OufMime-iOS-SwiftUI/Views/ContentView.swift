@@ -23,13 +23,6 @@ struct ContentView: View {
     .environmentObject(Dimens(isLarge: horizontalSizeClass == .regular))
     .environmentObject(appState)
   }
-  
-  private func addItem() {
-    withAnimation {
-      vm.insert(words: ["Test"], in: Category.allCases.shuffled().first!)
-    }
-  }
-  
 }
 
 struct ContentView_Previews: PreviewProvider {

@@ -14,9 +14,9 @@ class WordsViewModel: ObservableObject {
   private var repo: WordRepository!
   
   // Game Settings
-  @Published public var timerTotalTime = 10
-  @Published public var timerCurrentValue = 10
-  @Published public var wordsCount = 10
+  @Published public var timerTotalTime = 40
+  @Published public var timerCurrentValue = 40
+  @Published public var wordsCount = 40
   @Published public var categories =  Category.allCases.map { SelectableCategory(id: $0, selected: true) }
   private var selectedCategories: [String] {
     get {
@@ -48,16 +48,6 @@ class WordsViewModel: ObservableObject {
   init() {
     repo = WordRepositoryImpl()
     insertWords()
-  }
-  
-  func fetchWords() {
-    repo.fetchRandomWords(inCategories: Category.allCases.map({ category in
-      category.rawValue
-    }), withCount: 10) { words in
-      self.words = words
-    } onError: { message in
-      debugPrint(message)
-    }
   }
 }
 
@@ -107,10 +97,6 @@ extension WordsViewModel {
     get { currentTeam == 0 }
   }
   
-  var currentTeamName: String {
-    get { currentTeam == 0 ? "Les Bleus" : "Les Oranges" }
-  }
-  
   func getColor(forteam team: Int) -> Color {
     switch (team) {
     case 0: return .accentColor
@@ -125,7 +111,7 @@ extension WordsViewModel {
 extension WordsViewModel {
   
   func initGame(onCompleted: @escaping (() -> Void)) {
-    repo.fetchRandomWords(inCategories: selectedCategories, withCount: wordsCount) { words in
+    repo.fetchRandomWords(inCategories: selectedCategories, withCount: wordsCount, inLanguage: Locale.current.languageCode!) { words in
       self.words = words
       print("Selected Words: \(words)")
       
@@ -217,22 +203,8 @@ extension WordsViewModel {
         return
       }
       
-      insert(words: words.actions, in: .actions)
-      insert(words: words.activities, in: .activities)
-      insert(words: words.anatomy, in: .anatomy)
-      insert(words: words.animals, in: .animals)
-      insert(words: words.celebrities, in: .celebrities)
-      insert(words: words.clothes, in: .clothes)
-      insert(words: words.events, in: .events)
-      insert(words: words.fictional, in: .fictional)
-      insert(words: words.food, in: .food)
-      insert(words: words.geek, in: .geek)
-      insert(words: words.locations, in: .locations)
-      insert(words: words.jobs, in: .jobs)
-      insert(words: words.mythology, in: .mythology)
-      insert(words: words.nature, in: .nature)
-      insert(words: words.objects, in: .objects)
-      insert(words: words.vehicles, in: .vehicles)
+      insertLanguageWords(language: "en", words: words.en)
+      insertLanguageWords(language: "fr", words: words.fr)
       
       wordsListVersion = words.version
       
@@ -241,10 +213,29 @@ extension WordsViewModel {
     }
   }
   
-  func insert(words: [String], in category: Category) {
+  func insertLanguageWords(language: String, words: TranslatedWords) {
+    insert(words: words.actions, in: .actions, language: language)
+    insert(words: words.activities, in: .activities, language: language)
+    insert(words: words.anatomy, in: .anatomy, language: language)
+    insert(words: words.animals, in: .animals, language: language)
+    insert(words: words.celebrities, in: .celebrities, language: language)
+    insert(words: words.clothes, in: .clothes, language: language)
+    insert(words: words.events, in: .events, language: language)
+    insert(words: words.fictional, in: .fictional, language: language)
+    insert(words: words.food, in: .food, language: language)
+    insert(words: words.geek, in: .geek, language: language)
+    insert(words: words.locations, in: .locations, language: language)
+    insert(words: words.jobs, in: .jobs, language: language)
+    insert(words: words.mythology, in: .mythology, language: language)
+    insert(words: words.nature, in: .nature, language: language)
+    insert(words: words.objects, in: .objects, language: language)
+    insert(words: words.vehicles, in: .vehicles, language: language)
+  }
+  
+  func insert(words: [String], in category: Category, language: String) {
     
     let wordEntities = words.map { word in
-      WordModel(word: word, category: category)
+      WordModel(word: word, category: category, language: language)
     }
     
     repo.insert(words: wordEntities, onCompleted: {

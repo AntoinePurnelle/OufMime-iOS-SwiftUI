@@ -1,0 +1,47 @@
+"app_name" = "OufMime!";
+"settings" = "Settings";
+
+"score_total" = "Total";
+"score_round" = "Round";
+
+"describe" = "Describe";
+"word" = "One word";
+"mime" = "Mime";
+
+"start" = "Play!";
+"round %lld" = "Round %lld";
+
+"team_blue" = "Team Blue";
+"team_orange" = "Team Orange";
+
+"team_blue_play" = "Team Blue, play!";
+"team_orange_play" = "Team Orange, play!";
+
+"found" = "Found";
+"missed" = "Missed";
+
+"next" = "Next";
+"back" = "Back";
+
+"new_game" = "New game";
+"next_round" = "Next round!";
+
+"duration" = "Turn duration (s)";
+"words_count" = "Words count";
+
+"actions" = "Actions";
+"activities" = "Sports - Hobbies - Games";
+"anatomy" = "Anatomy";
+"animals" = "Animals";
+"celebrities" = "Celebrities - Historical figures";
+"clothes" = "Clothes";
+"events" = "Events";
+"fictional" = "Fiction";
+"food" = "Food";
+"geek" = "Geek";
+"jobs" = "Jobs";
+"locations" = "Locations";
+"mythology" = "Mythology";
+"nature" = "Nature";
+"objects" = "Objects";
+"vehicles" = "Vehicles";
