@@ -28,9 +28,9 @@ struct PlayScreen: View {
       VStack {
         HStack {
           ScoreboardView(
-            topLabel: "Trouvés",
+            topLabel: "found",
             topScore: vm.wordsFoundInTurnCount,
-            bottomLabel: "Manqués",
+            bottomLabel: "missed",
             bottomScore: vm.wordsMissedInTurnCount,
             color: .white)
           .frame(maxWidth: .infinity)
@@ -177,7 +177,7 @@ struct WordCardView: View {
           text: word.word,
           color: .accentColor
         )
-        Text(word.category.rawValue)
+        Text(LocalizedStringKey(word.category.rawValue))
           .font(.custom(Constants.font, size: dimens.subtitleText))
           .multilineTextAlignment(.center)
           .foregroundColor(.accentColor)
@@ -199,19 +199,21 @@ struct PlayScreen_Previews: PreviewProvider {
       .environmentObject(WordsViewModel())
       .environmentObject(Dimens())
       .previewDevice("iPhone 13")
+      .environment(\.locale, .init(identifier: "fr"))
     
     PlayScreen()
       .environmentObject(WordsViewModel())
       .environmentObject(Dimens(isLarge: true))
       .previewInterfaceOrientation(.landscapeLeft)
       .previewDevice("iPad Pro (9.7-inch)")
+      .environment(\.locale, .init(identifier: "en"))
     
     TimerView(value: Binding.constant(40), maxValue: 60, invertColors: false)
       .environmentObject(Dimens())
       .previewLayout(.fixed(width: 120, height: 120))
       .background(Color.primaryColor)
     
-    WordCardView(word: WordModel(word: "Octopus", category: .animals))
+    WordCardView(word: WordModel(word: "Octopus", category: .animals, language: "en"))
       .environmentObject(Dimens())
       .previewLayout(.fixed(width: 400, height: 220))
       .background(Color.primaryColor)

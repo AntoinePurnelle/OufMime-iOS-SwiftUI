@@ -32,6 +32,7 @@
 		AE4A10CC27E4BF2500357677 /* ColorExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4A10CB27E4BF2500357677 /* ColorExt.swift */; };
 		AE4A10D027E4D0B500357677 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4A10CF27E4D0B500357677 /* Constants.swift */; };
 		AE4A10D227E4D36500357677 /* SettingsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4A10D127E4D36500357677 /* SettingsScreen.swift */; };
+		AECFF25027F2F5C300563F3E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = AECFF24E27F2F5C300563F3E /* Localizable.strings */; };
 		AEEDCD1727E87981004977D7 /* ScoreboardViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEDCD1627E87981004977D7 /* ScoreboardViews.swift */; };
 		AEEDCD1927E87C99004977D7 /* TurnStartScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEDCD1827E87C99004977D7 /* TurnStartScreen.swift */; };
 		AEEDCD1B27E8AD58004977D7 /* PlayScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEEDCD1A27E8AD58004977D7 /* PlayScreen.swift */; };
@@ -85,6 +86,8 @@
 		AE4A10CB27E4BF2500357677 /* ColorExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExt.swift; sourceTree = "<group>"; };
 		AE4A10CF27E4D0B500357677 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		AE4A10D127E4D36500357677 /* SettingsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsScreen.swift; sourceTree = "<group>"; };
+		AECFF24F27F2F5C300563F3E /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		AECFF25427F2F6A600563F3E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		AEEDCD1627E87981004977D7 /* ScoreboardViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScoreboardViews.swift; sourceTree = "<group>"; };
 		AEEDCD1827E87C99004977D7 /* TurnStartScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TurnStartScreen.swift; sourceTree = "<group>"; };
 		AEEDCD1A27E8AD58004977D7 /* PlayScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayScreen.swift; sourceTree = "<group>"; };
@@ -140,6 +143,7 @@
 		AE1AB17F27E3804100264774 /* OufMime-iOS-SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				AECFF24E27F2F5C300563F3E /* Localizable.strings */,
 				AE4A10C827E4B80100357677 /* Utils */,
 				AE1AB1B927E389DC00264774 /* Assets */,
 				AE1AB1B027E3829B00264774 /* Model */,
@@ -329,6 +333,7 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
 			);
 			mainGroup = AE1AB17427E3804100264774;
 			productRefGroup = AE1AB17E27E3804100264774 /* Products */;
@@ -351,6 +356,7 @@
 				AE1AB1BB27E38A0F00264774 /* words.json in Resources */,
 				AE3C86F727E9CCA300030154 /* timer_other.wav in Resources */,
 				AE1AB18827E3804300264774 /* Preview Assets.xcassets in Resources */,
+				AECFF25027F2F5C300563F3E /* Localizable.strings in Resources */,
 				AE3C86FA27E9CCA300030154 /* word_wrong.wav in Resources */,
 				AE3C86F827E9CCA300030154 /* word_ok.wav in Resources */,
 				AE3C86FB27E9CCA300030154 /* timer.wav in Resources */,
@@ -431,6 +437,18 @@
 			targetProxy = AE1AB19D27E3804300264774 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		AECFF24E27F2F5C300563F3E /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				AECFF24F27F2F5C300563F3E /* fr */,
+				AECFF25427F2F6A600563F3E /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		AE1AB1A427E3804300264774 /* Debug */ = {

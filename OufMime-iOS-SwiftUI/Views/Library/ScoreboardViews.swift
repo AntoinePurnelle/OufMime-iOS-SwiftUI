@@ -20,9 +20,9 @@ struct HeaderView: View {
     HStack(spacing: dimens.paddingXLarge) {
       
       ScoreboardView(
-        topLabel: "Total",
+        topLabel: "score_total",
         topScore: team1TotalScore,
-        bottomLabel: "Round",
+        bottomLabel: "score_round",
         bottomScore: team1RoundScore,
         color: .accentColor
       )
@@ -31,9 +31,9 @@ struct HeaderView: View {
         .frame(width: dimens.iconMedium, height: dimens.iconMedium)
       
       ScoreboardView(
-        topLabel: "Total",
+        topLabel: "score_total",
         topScore: team2TotalScore,
-        bottomLabel: "Round",
+        bottomLabel: "score_round",
         bottomScore: team2RoundScore,
         color: .primaryColor
       )
@@ -102,9 +102,9 @@ struct Scoreboard_Previews: PreviewProvider {
     
     VStack(alignment: .center, spacing: 10) {
       HeaderView(team1TotalScore: 42, team1RoundScore: 9, team2TotalScore: 24, team2RoundScore: 4, invertColors: true)
-      ScoreboardView(topLabel: "Total", topScore: 42, bottomLabel: "Round", bottomScore: 9, color: .primaryColor)
+      ScoreboardView(topLabel: "score_total", topScore: 42, bottomLabel: "score_round", bottomScore: 9, color: .primaryColor)
         .frame(width: 100)
-      ScoreLineView(scoreName: "Total", score: 42, color: .primaryColor)
+      ScoreLineView(scoreName: "score_total", score: 42, color: .primaryColor)
         .frame(width: 100)
     }
     .environmentObject(Dimens())

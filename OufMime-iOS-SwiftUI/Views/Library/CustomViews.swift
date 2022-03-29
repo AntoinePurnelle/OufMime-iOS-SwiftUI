@@ -17,10 +17,11 @@ struct SizedButton: View {
   
   var body: some View {
     Button(action: onClick) {
-      Text(text.uppercased())
+      Text(LocalizedStringKey(text))
         .foregroundColor(.white)
         .font(.custom(Constants.font, size: dimens.getButtonDimens(for: textSize)))
         .fontWeight(.medium)
+        .textCase(.uppercase)
         .padding()
         .background(invertColor ? Color.primaryColor : Color.accentColor)
         .cornerRadius(8.0)
@@ -35,8 +36,26 @@ struct BodyTextView: View {
   var color: Color = .black
   
   var body: some View {
-    Text(text)
+    Text(LocalizedStringKey(text))
       .font(.custom(Constants.font, size: dimens.bodyText))
+      .foregroundColor(color)
+  }
+}
+
+struct TitleLocalizedTextView: View {
+  @EnvironmentObject var dimens: Dimens
+  
+  var localizedText: LocalizedStringKey
+  var color: Color = .black
+  var textCase: Text.Case? = nil
+  var fontWeight: Font.Weight? = nil
+  
+  var body: some View {
+    Text(localizedText)
+      .font(.custom(Constants.font, size: dimens.titleText))
+      .fontWeight(fontWeight)
+      .multilineTextAlignment(.center)
+      .textCase(textCase)
       .foregroundColor(color)
   }
 }
@@ -46,11 +65,15 @@ struct TitleTextView: View {
   
   var text: String
   var color: Color = .black
+  var textCase: Text.Case? = nil
+  var fontWeight: Font.Weight? = nil
   
   var body: some View {
-    Text(text)
+    Text(LocalizedStringKey(text))
       .font(.custom(Constants.font, size: dimens.titleText))
+      .fontWeight(fontWeight)
       .multilineTextAlignment(.center)
+      .textCase(textCase)
       .foregroundColor(color)
   }
 }
@@ -126,12 +149,13 @@ struct RoundIcon:View {
 
 struct CustomViews_Previews: PreviewProvider {
   static var previews: some View {
-    VStack {
-      SizedButton(text: "Button", onClick: { })
+    VStack(spacing: 16) {
+      SizedButton(text: "start", onClick: { })
         .environmentObject(WordsViewModel())
         .environmentObject(Dimens())
-      BodyTextView(text: "Body Text View", color: .primaryColor)
+      BodyTextView(text: "team_blue", color: .primaryColor)
         .environmentObject(Dimens())
+      TitleTextView(text: "TitleText")
       AppIcon()
         .environmentObject(Dimens())
         .frame(width: 100, height: 100)

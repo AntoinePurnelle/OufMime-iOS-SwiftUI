@@ -1,0 +1,47 @@
+"app_name" = "OufMime !";
+"settings" = "Paramètres";
+
+"score_total" = "Total";
+"score_round" = "Manche";
+
+"describe" = "Décrire";
+"word" = "Un mot";
+"mime" = "Mimer";
+
+"start" = "Jouez !";
+"round %lld" = "Manche %lld";
+
+"team_blue" = "Les Bleus";
+"team_orange" = "Les Oranges";
+
+"team_blue_play" = "Les Bleus, jouez !";
+"team_orange_play" = "Les Oranges, jouer !";
+
+"found" = "Trouvés";
+"missed" = "Manqués";
+
+"next" = "Suivant";
+"back" = "Précédent";
+
+"new_game" = "Nouvelle partie !";
+"next_round" = "Manche suivante !";
+
+"duration" = "Durée des tours (s)";
+"words_count" = "Nombre de mots";
+
+"actions" = "Actions";
+"activities" = "Sports - Hobbies - Jeux";
+"anatomy" = "Anatomie";
+"animals" = "Animaux";
+"celebrities" = "Personnages célèbres ou historiques";
+"clothes" = "Habits";
+"events" = "Évènements";
+"fictional" = "Personage ou créature fictif";
+"food" = "Nourriture";
+"geek" = "Geek";
+"jobs" = "Métiers";
+"locations" = "Lieux";
+"mythology" = "Mythologie";
+"nature" = "Nature";
+"objects" = "Objets";
+"vehicles" = "Véhicules";

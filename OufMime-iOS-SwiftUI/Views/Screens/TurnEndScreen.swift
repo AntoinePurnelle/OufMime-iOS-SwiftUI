@@ -37,7 +37,7 @@ struct TurnEndScreen: View {
           isActive: $showScoreboard
         ) {
           SizedButton(
-            text: "Suivant".uppercased(),
+            text: "next",
             invertColor: vm.shouldInvertColors,
             onClick: {
               vm.finishTurn()
@@ -107,9 +107,9 @@ struct TurnEndScoreboardView: View {
         .frame(width: dimens.iconLarge, height: dimens.iconLarge)
       
       ScoreboardView(
-        topLabel: "Trouvés",
+        topLabel: "found",
         topScore: vm.wordsFoundInTurnCount,
-        bottomLabel: "Manqués",
+        bottomLabel: "missed",
         bottomScore: vm.wordsMissedInTurnCount,
         color: .white
       )
@@ -147,6 +147,7 @@ struct TurnEndScreen_Previews: PreviewProvider {
       .environmentObject(Dimens())
       .environmentObject(AppState())
       .previewDevice("iPhone 13")
+      .environment(\.locale, .init(identifier: "fr"))
     
     TurnEndScreen()
       .environmentObject(WordsViewModel())
@@ -154,9 +155,10 @@ struct TurnEndScreen_Previews: PreviewProvider {
       .environmentObject(Dimens(isLarge: true))
       .previewInterfaceOrientation(.landscapeLeft)
       .previewDevice("iPad Pro (12.9-inch) (5th generation)")
+      .environment(\.locale, .init(identifier: "en"))
     
     WordPlayedView(
-      word: WordModel(word: "Octopus", category: .animals),
+      word: WordModel(word: "Octopus", category: .animals, language: "en"),
       wasFound: true
     )
     .environmentObject(Dimens())
